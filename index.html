@@ -122,8 +122,12 @@
     .episodes-grid { display: grid; gap: 0.5rem; padding: 0 1.25rem 1.25rem; }
     @media (min-width: 640px) { .episodes-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1024px) { .episodes-grid { grid-template-columns: repeat(3, 1fr); } }
-    .episode-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; background: rgba(30,41,59,0.5); border-radius: 0.5rem; }
+    .episode-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; padding-right: 2rem; background: rgba(30,41,59,0.5); border-radius: 0.5rem; border: 1px solid transparent; transition: all 0.2s; }
     .episode-item:hover { background: rgba(51,65,85,0.5); }
+    .episode-item.has-link { cursor: pointer; position: relative; }
+    .episode-item.has-link:hover { background: rgba(59,130,246,0.2); border-color: rgba(59,130,246,0.4); }
+    .episode-item.has-link::after { content: '📊'; position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); font-size: 0.875rem; opacity: 0.7; }
+    .episode-item.has-link:hover::after { opacity: 1; }
     .ep-num { font-size: 0.75rem; color: var(--slate-500); font-family: monospace; min-width: 1.5rem; }
     .ep-title { font-size: 0.875rem; color: var(--slate-300); line-height: 1.4; }
     
@@ -146,8 +150,8 @@
         <span class="logo-text">NEXUS<span>3.0</span></span>
       </div>
       <div class="nav-links">
-        <span class="nav-link active" data-page="home" onclick="showPage('home')"><span class="lang-en">Home</span><span class="lang-ja">ホーム</span><span class="lang-ko">홈</span></span>
-        <span class="nav-link" data-page="series" onclick="showPage('series')"><span class="lang-en">Series</span><span class="lang-ja">シリーズ</span><span class="lang-ko">시리즈</span></span>
+        <span class="nav-link active" data-page="home" onclick="showPage('home')"><span class="lang-en">Home</span><span class="lang-ja">ãƒ›ãƒ¼ãƒ </span><span class="lang-ko">í™ˆ</span></span>
+        <span class="nav-link" data-page="series" onclick="showPage('series')"><span class="lang-en">Series</span><span class="lang-ja">ã‚·ãƒªãƒ¼ã‚º</span><span class="lang-ko">ì‹œë¦¬ì¦ˆ</span></span>
       </div>
       <div class="lang-selector">
         <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -164,21 +168,21 @@
         <div class="hero-badge">Political Economy History</div>
         <h1 class="hero-title">
           <span class="lang-en">Where Economics, Politics, and Diplomacy Converge</span>
-          <span class="lang-ja">経済・政治・外交が交差する場所</span>
-          <span class="lang-ko">경제, 정치, 외교가 만나는 곳</span>
+          <span class="lang-ja">çµŒæ¸ˆãƒ»æ”¿æ²»ãƒ»å¤–äº¤ãŒäº¤å·®ã™ã‚‹å ´æ‰€</span>
+          <span class="lang-ko">ê²½ì œ, ì •ì¹˜, ì™¸êµê°€ ë§Œë‚˜ëŠ” ê³³</span>
         </h1>
         <p class="hero-subtitle">
-          <span class="lang-en">180 episodes across 6 series — tracing 400 years of decisions, crises, and transformations</span>
-          <span class="lang-ja">6シリーズ全180エピソード — 400年の決断、危機、変革を追う</span>
-          <span class="lang-ko">6개 시리즈 180편 — 400년의 결정, 위기, 변혁을 추적합니다</span>
+          <span class="lang-en">180 episodes across 6 series â€” tracing 400 years of decisions, crises, and transformations</span>
+          <span class="lang-ja">6ã‚·ãƒªãƒ¼ã‚ºå…¨180ã‚¨ãƒ”ã‚½ãƒ¼ãƒ‰ â€” 400å¹´ã®æ±ºæ–­ã€å±æ©Ÿã€å¤‰é©ã‚’è¿½ã†</span>
+          <span class="lang-ko">6ê°œ ì‹œë¦¬ì¦ˆ 180íŽ¸ â€” 400ë…„ì˜ ê²°ì •, ìœ„ê¸°, ë³€í˜ì„ ì¶”ì í•©ë‹ˆë‹¤</span>
         </p>
         <div>
           <a href="https://www.youtube.com/channel/UCACRkyZNYi7I9HtgBtbLv4A" target="_blank" class="btn btn-youtube">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            <span class="lang-en">Watch on YouTube</span><span class="lang-ja">YouTubeで視聴</span><span class="lang-ko">YouTube에서 시청</span>
+            <span class="lang-en">Watch on YouTube</span><span class="lang-ja">YouTubeã§è¦–è´</span><span class="lang-ko">YouTubeì—ì„œ ì‹œì²­</span>
           </a>
           <button class="btn btn-secondary" onclick="showPage('series')">
-            <span class="lang-en">Explore Series</span><span class="lang-ja">シリーズを見る</span><span class="lang-ko">시리즈 보기</span>
+            <span class="lang-en">Explore Series</span><span class="lang-ja">ã‚·ãƒªãƒ¼ã‚ºã‚’è¦‹ã‚‹</span><span class="lang-ko">ì‹œë¦¬ì¦ˆ ë³´ê¸°</span>
           </button>
         </div>
       </div>
@@ -186,44 +190,44 @@
     
     <section class="section">
       <div class="container">
-        <h2 class="section-title"><span class="lang-en">6 Series</span><span class="lang-ja">6シリーズ</span><span class="lang-ko">6개 시리즈</span></h2>
-        <p class="section-subtitle"><span class="lang-en">Click any series to explore all episodes</span><span class="lang-ja">シリーズをクリックして全エピソードを見る</span><span class="lang-ko">시리즈를 클릭하여 모든 에피소드 보기</span></p>
+        <h2 class="section-title"><span class="lang-en">6 Series</span><span class="lang-ja">6ã‚·ãƒªãƒ¼ã‚º</span><span class="lang-ko">6ê°œ ì‹œë¦¬ì¦ˆ</span></h2>
+        <p class="section-subtitle"><span class="lang-en">Click any series to explore all episodes</span><span class="lang-ja">ã‚·ãƒªãƒ¼ã‚ºã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦å…¨ã‚¨ãƒ”ã‚½ãƒ¼ãƒ‰ã‚’è¦‹ã‚‹</span><span class="lang-ko">ì‹œë¦¬ì¦ˆë¥¼ í´ë¦­í•˜ì—¬ ëª¨ë“  ì—í”¼ì†Œë“œ ë³´ê¸°</span></p>
         <div class="series-grid">
           <div class="series-card" onclick="showPage('series'); showSeries(1);">
-            <span class="series-card-icon">💰</span>
-            <h3 class="series-card-title"><span class="lang-en">A History of Modern Finance</span><span class="lang-ja">近代金融史</span><span class="lang-ko">근대 금융사</span></h3>
-            <p class="series-card-question"><span class="lang-en">How did money become power?</span><span class="lang-ja">貨幣はいかにして権力となったか？</span><span class="lang-ko">돈은 어떻게 권력이 되었나?</span></p>
-            <p class="series-card-episodes">30 Episodes · 1609-1974</p>
+            <span class="series-card-icon">ðŸ’°</span>
+            <h3 class="series-card-title"><span class="lang-en">A History of Modern Finance</span><span class="lang-ja">è¿‘ä»£é‡‘èžå²</span><span class="lang-ko">ê·¼ëŒ€ ê¸ˆìœµì‚¬</span></h3>
+            <p class="series-card-question"><span class="lang-en">How did money become power?</span><span class="lang-ja">è²¨å¹£ã¯ã„ã‹ã«ã—ã¦æ¨©åŠ›ã¨ãªã£ãŸã‹ï¼Ÿ</span><span class="lang-ko">ëˆì€ ì–´ë–»ê²Œ ê¶Œë ¥ì´ ë˜ì—ˆë‚˜?</span></p>
+            <p class="series-card-episodes">30 Episodes Â· 1609-1974</p>
           </div>
           <div class="series-card" onclick="showPage('series'); showSeries(2);">
-            <span class="series-card-icon">🌐</span>
-            <h3 class="series-card-title"><span class="lang-en">Currency Hegemony</span><span class="lang-ja">通貨覇権</span><span class="lang-ko">통화 패권</span></h3>
-            <p class="series-card-question"><span class="lang-en">Who controls the world's money?</span><span class="lang-ja">誰が世界の貨幣を支配するのか？</span><span class="lang-ko">누가 세계의 돈을 지배하는가?</span></p>
-            <p class="series-card-episodes">30 Episodes · 1663-2023</p>
+            <span class="series-card-icon">ðŸŒ</span>
+            <h3 class="series-card-title"><span class="lang-en">Currency Hegemony</span><span class="lang-ja">é€šè²¨è¦‡æ¨©</span><span class="lang-ko">í†µí™” íŒ¨ê¶Œ</span></h3>
+            <p class="series-card-question"><span class="lang-en">Who controls the world's money?</span><span class="lang-ja">èª°ãŒä¸–ç•Œã®è²¨å¹£ã‚’æ”¯é…ã™ã‚‹ã®ã‹ï¼Ÿ</span><span class="lang-ko">ëˆ„ê°€ ì„¸ê³„ì˜ ëˆì„ ì§€ë°°í•˜ëŠ”ê°€?</span></p>
+            <p class="series-card-episodes">30 Episodes Â· 1663-2023</p>
           </div>
           <div class="series-card" onclick="showPage('series'); showSeries(3);">
-            <span class="series-card-icon">📉</span>
-            <h3 class="series-card-title"><span class="lang-en">Anatomy of Economic Crises</span><span class="lang-ja">経済危機の解剖</span><span class="lang-ko">경제 위기의 해부</span></h3>
-            <p class="series-card-question"><span class="lang-en">Why do systems collapse?</span><span class="lang-ja">なぜシステムは崩壊するのか？</span><span class="lang-ko">왜 시스템은 붕괴하는가?</span></p>
-            <p class="series-card-episodes">30 Episodes · 1637-2023</p>
+            <span class="series-card-icon">ðŸ“‰</span>
+            <h3 class="series-card-title"><span class="lang-en">Anatomy of Economic Crises</span><span class="lang-ja">çµŒæ¸ˆå±æ©Ÿã®è§£å‰–</span><span class="lang-ko">ê²½ì œ ìœ„ê¸°ì˜ í•´ë¶€</span></h3>
+            <p class="series-card-question"><span class="lang-en">Why do systems collapse?</span><span class="lang-ja">ãªãœã‚·ã‚¹ãƒ†ãƒ ã¯å´©å£Šã™ã‚‹ã®ã‹ï¼Ÿ</span><span class="lang-ko">ì™œ ì‹œìŠ¤í…œì€ ë¶•ê´´í•˜ëŠ”ê°€?</span></p>
+            <p class="series-card-episodes">30 Episodes Â· 1637-2023</p>
           </div>
           <div class="series-card" onclick="showPage('series'); showSeries(4);">
-            <span class="series-card-icon">🚢</span>
-            <h3 class="series-card-title"><span class="lang-en">A History of Modern Trade</span><span class="lang-ja">近代貿易史</span><span class="lang-ko">근대 무역사</span></h3>
-            <p class="series-card-question"><span class="lang-en">Open borders or closed?</span><span class="lang-ja">国境を開くか閉じるか？</span><span class="lang-ko">국경을 열 것인가 닫을 것인가?</span></p>
-            <p class="series-card-episodes">30 Episodes · 1651-2022</p>
+            <span class="series-card-icon">ðŸš¢</span>
+            <h3 class="series-card-title"><span class="lang-en">A History of Modern Trade</span><span class="lang-ja">è¿‘ä»£è²¿æ˜“å²</span><span class="lang-ko">ê·¼ëŒ€ ë¬´ì—­ì‚¬</span></h3>
+            <p class="series-card-question"><span class="lang-en">Open borders or closed?</span><span class="lang-ja">å›½å¢ƒã‚’é–‹ãã‹é–‰ã˜ã‚‹ã‹ï¼Ÿ</span><span class="lang-ko">êµ­ê²½ì„ ì—´ ê²ƒì¸ê°€ ë‹«ì„ ê²ƒì¸ê°€?</span></p>
+            <p class="series-card-episodes">30 Episodes Â· 1651-2022</p>
           </div>
           <div class="series-card" onclick="showPage('series'); showSeries(5);">
-            <span class="series-card-icon">🏗️</span>
-            <h3 class="series-card-title"><span class="lang-en">The Developmental State</span><span class="lang-ja">発展国家モデル</span><span class="lang-ko">발전국가 모델</span></h3>
-            <p class="series-card-question"><span class="lang-en">How do late developers catch up?</span><span class="lang-ja">後発国はいかにして追いついたか？</span><span class="lang-ko">후발국은 어떻게 따라잡는가?</span></p>
-            <p class="series-card-episodes">30 Episodes · 1868-present</p>
+            <span class="series-card-icon">ðŸ—ï¸</span>
+            <h3 class="series-card-title"><span class="lang-en">The Developmental State</span><span class="lang-ja">ç™ºå±•å›½å®¶ãƒ¢ãƒ‡ãƒ«</span><span class="lang-ko">ë°œì „êµ­ê°€ ëª¨ë¸</span></h3>
+            <p class="series-card-question"><span class="lang-en">How do late developers catch up?</span><span class="lang-ja">å¾Œç™ºå›½ã¯ã„ã‹ã«ã—ã¦è¿½ã„ã¤ã„ãŸã‹ï¼Ÿ</span><span class="lang-ko">í›„ë°œêµ­ì€ ì–´ë–»ê²Œ ë”°ë¼ìž¡ëŠ”ê°€?</span></p>
+            <p class="series-card-episodes">30 Episodes Â· 1868-present</p>
           </div>
           <div class="series-card" onclick="showPage('series'); showSeries(6);">
-            <span class="series-card-icon">🇺🇸</span>
-            <h3 class="series-card-title"><span class="lang-en">American Political Economy</span><span class="lang-ja">アメリカ政治経済</span><span class="lang-ko">미국 정치경제</span></h3>
-            <p class="series-card-question"><span class="lang-en">How does America actually work?</span><span class="lang-ja">アメリカは実際どう動いているのか？</span><span class="lang-ko">미국은 실제로 어떻게 작동하는가?</span></p>
-            <p class="series-card-episodes">30 Episodes · 1789-present</p>
+            <span class="series-card-icon">ðŸ‡ºðŸ‡¸</span>
+            <h3 class="series-card-title"><span class="lang-en">American Political Economy</span><span class="lang-ja">ã‚¢ãƒ¡ãƒªã‚«æ”¿æ²»çµŒæ¸ˆ</span><span class="lang-ko">ë¯¸êµ­ ì •ì¹˜ê²½ì œ</span></h3>
+            <p class="series-card-question"><span class="lang-en">How does America actually work?</span><span class="lang-ja">ã‚¢ãƒ¡ãƒªã‚«ã¯å®Ÿéš›ã©ã†å‹•ã„ã¦ã„ã‚‹ã®ã‹ï¼Ÿ</span><span class="lang-ko">ë¯¸êµ­ì€ ì‹¤ì œë¡œ ì–´ë–»ê²Œ ìž‘ë™í•˜ëŠ”ê°€?</span></p>
+            <p class="series-card-episodes">30 Episodes Â· 1789-present</p>
           </div>
         </div>
       </div>
@@ -234,8 +238,8 @@
   <div class="page" id="page-series">
     <div class="container">
       <div class="page-header">
-        <h1 class="page-title"><span class="lang-en">All Series</span><span class="lang-ja">全シリーズ</span><span class="lang-ko">전체 시리즈</span></h1>
-        <p class="page-desc"><span class="lang-en">Click on any part to expand and see all episodes</span><span class="lang-ja">パートをクリックして全エピソードを表示</span><span class="lang-ko">파트를 클릭하면 모든 에피소드가 표시됩니다</span></p>
+        <h1 class="page-title"><span class="lang-en">All Series</span><span class="lang-ja">å…¨ã‚·ãƒªãƒ¼ã‚º</span><span class="lang-ko">ì „ì²´ ì‹œë¦¬ì¦ˆ</span></h1>
+        <p class="page-desc"><span class="lang-en">Click on any part to expand and see all episodes</span><span class="lang-ja">ãƒ‘ãƒ¼ãƒˆã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦å…¨ã‚¨ãƒ”ã‚½ãƒ¼ãƒ‰ã‚’è¡¨ç¤º</span><span class="lang-ko">íŒŒíŠ¸ë¥¼ í´ë¦­í•˜ë©´ ëª¨ë“  ì—í”¼ì†Œë“œê°€ í‘œì‹œë©ë‹ˆë‹¤</span></p>
       </div>
       
       <div class="series-tabs">
@@ -250,84 +254,84 @@
       <!-- SERIES 1 -->
       <div class="series-detail active" id="series-1">
         <div class="page-header">
-          <h2 class="page-title"><span class="lang-en">A History of Modern Finance</span><span class="lang-ja">近代金融史</span><span class="lang-ko">근대 금융사</span></h2>
-          <p class="page-question"><span class="lang-en">How did money become power?</span><span class="lang-ja">貨幣はいかにして権力となったか？</span><span class="lang-ko">돈은 어떻게 권력이 되었나?</span></p>
-          <p class="page-desc">30 Episodes · 1609-1974</p>
+          <h2 class="page-title"><span class="lang-en">A History of Modern Finance</span><span class="lang-ja">è¿‘ä»£é‡‘èžå²</span><span class="lang-ko">ê·¼ëŒ€ ê¸ˆìœµì‚¬</span></h2>
+          <p class="page-question"><span class="lang-en">How did money become power?</span><span class="lang-ja">è²¨å¹£ã¯ã„ã‹ã«ã—ã¦æ¨©åŠ›ã¨ãªã£ãŸã‹ï¼Ÿ</span><span class="lang-ko">ëˆì€ ì–´ë–»ê²Œ ê¶Œë ¥ì´ ë˜ì—ˆë‚˜?</span></p>
+          <p class="page-desc">30 Episodes Â· 1609-1974</p>
         </div>
         <div class="parts-list">
           <div class="part-card part-card-1">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-1">1</div>
-              <div class="part-info"><h3><span class="lang-en">Birth of Central Banking</span><span class="lang-ja">中央銀行の誕生</span><span class="lang-ko">중앙은행의 탄생</span></h3><span>EP.01-06</span></div>
+              <div class="part-info"><h3><span class="lang-en">Birth of Central Banking</span><span class="lang-ja">ä¸­å¤®éŠ€è¡Œã®èª•ç”Ÿ</span><span class="lang-ko">ì¤‘ì•™ì€í–‰ì˜ íƒ„ìƒ</span></h3><span>EP.01-06</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">The Bank of Amsterdam 1609</span><span class="lang-ja">アムステルダム銀行 1609</span><span class="lang-ko">암스테르담 은행 1609</span></span></div>
-              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">The Deal That Created the Bank of England</span><span class="lang-ja">イングランド銀行を生んだ取引</span><span class="lang-ko">잉글랜드 은행 설립의 거래</span></span></div>
-              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">John Law and the Mississippi Bubble</span><span class="lang-ja">ジョン・ローとミシシッピ・バブル</span><span class="lang-ko">존 로와 미시시피 버블</span></span></div>
-              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">The Rothschilds: Myth vs. Reality</span><span class="lang-ja">ロスチャイルド家：神話と実際</span><span class="lang-ko">로스차일드 가문: 신화와 실제</span></span></div>
-              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Why America Killed Its Central Bank—Twice</span><span class="lang-ja">アメリカはなぜ中央銀行を二度廃止したか</span><span class="lang-ko">미국은 왜 중앙은행을 두 번 폐지했나</span></span></div>
-              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">The Secret Meeting at Jekyll Island</span><span class="lang-ja">ジキル島の秘密会議</span><span class="lang-ko">지킬섬의 비밀 회의</span></span></div>
+              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">The Bank of Amsterdam 1609</span><span class="lang-ja">ã‚¢ãƒ ã‚¹ãƒ†ãƒ«ãƒ€ãƒ éŠ€è¡Œ 1609</span><span class="lang-ko">ì•”ìŠ¤í…Œë¥´ë‹´ ì€í–‰ 1609</span></span></div>
+              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">The Deal That Created the Bank of England</span><span class="lang-ja">ã‚¤ãƒ³ã‚°ãƒ©ãƒ³ãƒ‰éŠ€è¡Œã‚’ç”Ÿã‚“ã å–å¼•</span><span class="lang-ko">ìž‰ê¸€ëžœë“œ ì€í–‰ ì„¤ë¦½ì˜ ê±°ëž˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">John Law and the Mississippi Bubble</span><span class="lang-ja">ã‚¸ãƒ§ãƒ³ãƒ»ãƒ­ãƒ¼ã¨ãƒŸã‚·ã‚·ãƒƒãƒ”ãƒ»ãƒãƒ–ãƒ«</span><span class="lang-ko">ì¡´ ë¡œì™€ ë¯¸ì‹œì‹œí”¼ ë²„ë¸”</span></span></div>
+              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">The Rothschilds: Myth vs. Reality</span><span class="lang-ja">ãƒ­ã‚¹ãƒãƒ£ã‚¤ãƒ«ãƒ‰å®¶ï¼šç¥žè©±ã¨å®Ÿéš›</span><span class="lang-ko">ë¡œìŠ¤ì°¨ì¼ë“œ ê°€ë¬¸: ì‹ í™”ì™€ ì‹¤ì œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Why America Killed Its Central Bankâ€”Twice</span><span class="lang-ja">ã‚¢ãƒ¡ãƒªã‚«ã¯ãªãœä¸­å¤®éŠ€è¡Œã‚’äºŒåº¦å»ƒæ­¢ã—ãŸã‹</span><span class="lang-ko">ë¯¸êµ­ì€ ì™œ ì¤‘ì•™ì€í–‰ì„ ë‘ ë²ˆ íì§€í–ˆë‚˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">The Secret Meeting at Jekyll Island</span><span class="lang-ja">ã‚¸ã‚­ãƒ«å³¶ã®ç§˜å¯†ä¼šè­°</span><span class="lang-ko">ì§€í‚¬ì„¬ì˜ ë¹„ë°€ íšŒì˜</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-1">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-1">2</div>
-              <div class="part-info"><h3><span class="lang-en">Gold Standard Era</span><span class="lang-ja">金本位制の時代</span><span class="lang-ko">금본위제의 시대</span></h3><span>EP.07-13</span></div>
+              <div class="part-info"><h3><span class="lang-en">Gold Standard Era</span><span class="lang-ja">é‡‘æœ¬ä½åˆ¶ã®æ™‚ä»£</span><span class="lang-ko">ê¸ˆë³¸ìœ„ì œì˜ ì‹œëŒ€</span></h3><span>EP.07-13</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Newton's Calculation: The Accidental Gold Standard</span><span class="lang-ja">ニュートンの計算：偶然の金本位制</span><span class="lang-ko">뉴턴의 계산: 우연한 금본위제</span></span></div>
-              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">Inside the Bank of England's Vault</span><span class="lang-ja">イングランド銀行金庫の秘密</span><span class="lang-ko">영란은행 금고의 비밀</span></span></div>
-              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">"The Crime of 1873"</span><span class="lang-ja">「1873年の犯罪」</span><span class="lang-ko">"1873년의 범죄"</span></span></div>
-              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">The Baring Crisis: Argentina Shakes London</span><span class="lang-ja">ベアリング危機</span><span class="lang-ko">바링 위기</span></span></div>
-              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">The Panic of 1907: One Man Stops a Crisis</span><span class="lang-ja">1907年パニック</span><span class="lang-ko">1907년 공황</span></span></div>
-              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">The Dark Side of Gold: Indian Famine</span><span class="lang-ja">金本位制の暗部</span><span class="lang-ko">금본위제의 어두운 면</span></span></div>
-              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">The Latin Monetary Union</span><span class="lang-ja">ラテン通貨同盟</span><span class="lang-ko">라틴통화동맹</span></span></div>
+              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Newton's Calculation: The Accidental Gold Standard</span><span class="lang-ja">ãƒ‹ãƒ¥ãƒ¼ãƒˆãƒ³ã®è¨ˆç®—ï¼šå¶ç„¶ã®é‡‘æœ¬ä½åˆ¶</span><span class="lang-ko">ë‰´í„´ì˜ ê³„ì‚°: ìš°ì—°í•œ ê¸ˆë³¸ìœ„ì œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">Inside the Bank of England's Vault</span><span class="lang-ja">ã‚¤ãƒ³ã‚°ãƒ©ãƒ³ãƒ‰éŠ€è¡Œé‡‘åº«ã®ç§˜å¯†</span><span class="lang-ko">ì˜ëž€ì€í–‰ ê¸ˆê³ ì˜ ë¹„ë°€</span></span></div>
+              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">"The Crime of 1873"</span><span class="lang-ja">ã€Œ1873å¹´ã®çŠ¯ç½ªã€</span><span class="lang-ko">"1873ë…„ì˜ ë²”ì£„"</span></span></div>
+              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">The Baring Crisis: Argentina Shakes London</span><span class="lang-ja">ãƒ™ã‚¢ãƒªãƒ³ã‚°å±æ©Ÿ</span><span class="lang-ko">ë°”ë§ ìœ„ê¸°</span></span></div>
+              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">The Panic of 1907: One Man Stops a Crisis</span><span class="lang-ja">1907å¹´ãƒ‘ãƒ‹ãƒƒã‚¯</span><span class="lang-ko">1907ë…„ ê³µí™©</span></span></div>
+              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">The Dark Side of Gold: Indian Famine</span><span class="lang-ja">é‡‘æœ¬ä½åˆ¶ã®æš—éƒ¨</span><span class="lang-ko">ê¸ˆë³¸ìœ„ì œì˜ ì–´ë‘ìš´ ë©´</span></span></div>
+              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">The Latin Monetary Union</span><span class="lang-ja">ãƒ©ãƒ†ãƒ³é€šè²¨åŒç›Ÿ</span><span class="lang-ko">ë¼í‹´í†µí™”ë™ë§¹</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-1">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-1">3</div>
-              <div class="part-info"><h3><span class="lang-en">War and Chaos</span><span class="lang-ja">戦争と混乱</span><span class="lang-ko">전쟁과 혼란</span></h3><span>EP.14-19</span></div>
+              <div class="part-info"><h3><span class="lang-en">War and Chaos</span><span class="lang-ja">æˆ¦äº‰ã¨æ··ä¹±</span><span class="lang-ko">ì „ìŸê³¼ í˜¼ëž€</span></h3><span>EP.14-19</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">The Week of August 1914</span><span class="lang-ja">1914年8月の一週間</span><span class="lang-ko">1914년 8월의 일주일</span></span></div>
-              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Three Ways to Pay for War</span><span class="lang-ja">戦費の三つの道</span><span class="lang-ko">전비의 세 가지 길</span></span></div>
-              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">German Hyperinflation</span><span class="lang-ja">ドイツ・ハイパーインフレ</span><span class="lang-ko">독일 하이퍼인플레이션</span></span></div>
-              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Churchill's Greatest Mistake: 1925</span><span class="lang-ja">チャーチル最大の過ち</span><span class="lang-ko">처칠의 가장 큰 실수</span></span></div>
-              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Five Days in October 1929</span><span class="lang-ja">1929年10月の5日間</span><span class="lang-ko">1929년 10월의 5일</span></span></div>
-              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Britain Leaves Gold First</span><span class="lang-ja">英国金本位離脱</span><span class="lang-ko">금을 버린 나라가 살았다</span></span></div>
+              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">The Week of August 1914</span><span class="lang-ja">1914å¹´8æœˆã®ä¸€é€±é–“</span><span class="lang-ko">1914ë…„ 8ì›”ì˜ ì¼ì£¼ì¼</span></span></div>
+              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Three Ways to Pay for War</span><span class="lang-ja">æˆ¦è²»ã®ä¸‰ã¤ã®é“</span><span class="lang-ko">ì „ë¹„ì˜ ì„¸ ê°€ì§€ ê¸¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">German Hyperinflation</span><span class="lang-ja">ãƒ‰ã‚¤ãƒ„ãƒ»ãƒã‚¤ãƒ‘ãƒ¼ã‚¤ãƒ³ãƒ•ãƒ¬</span><span class="lang-ko">ë…ì¼ í•˜ì´í¼ì¸í”Œë ˆì´ì…˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Churchill's Greatest Mistake: 1925</span><span class="lang-ja">ãƒãƒ£ãƒ¼ãƒãƒ«æœ€å¤§ã®éŽã¡</span><span class="lang-ko">ì²˜ì¹ ì˜ ê°€ìž¥ í° ì‹¤ìˆ˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Five Days in October 1929</span><span class="lang-ja">1929å¹´10æœˆã®5æ—¥é–“</span><span class="lang-ko">1929ë…„ 10ì›”ì˜ 5ì¼</span></span></div>
+              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Britain Leaves Gold First</span><span class="lang-ja">è‹±å›½é‡‘æœ¬ä½é›¢è„±</span><span class="lang-ko">ê¸ˆì„ ë²„ë¦° ë‚˜ë¼ê°€ ì‚´ì•˜ë‹¤</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-1">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-1">4</div>
-              <div class="part-info"><h3><span class="lang-en">Bretton Woods System</span><span class="lang-ja">ブレトンウッズ体制</span><span class="lang-ko">브레튼우즈 체제</span></h3><span>EP.20-25</span></div>
+              <div class="part-info"><h3><span class="lang-en">Bretton Woods System</span><span class="lang-ja">ãƒ–ãƒ¬ãƒˆãƒ³ã‚¦ãƒƒã‚ºä½“åˆ¶</span><span class="lang-ko">ë¸Œë ˆíŠ¼ìš°ì¦ˆ ì²´ì œ</span></h3><span>EP.20-25</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Roosevelt's Gold Seizure</span><span class="lang-ja">ルーズベルトの金没収令</span><span class="lang-ko">루스벨트의 금 몰수령</span></span></div>
-              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">Keynes's Bancor</span><span class="lang-ja">ケインズのバンコール</span><span class="lang-ko">케인즈의 방코르</span></span></div>
-              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Harry Dexter White: Architect or Spy?</span><span class="lang-ja">ハリー・デクスター・ホワイト</span><span class="lang-ko">해리 덱스터 화이트</span></span></div>
-              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Three Weeks in New Hampshire</span><span class="lang-ja">ニューハンプシャーの3週間</span><span class="lang-ko">뉴햄프셔의 3주</span></span></div>
-              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">The IMF's First Test: Suez 1956</span><span class="lang-ja">IMFの最初の試練</span><span class="lang-ko">IMF의 첫 시험</span></span></div>
-              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">The Birth of Eurodollars</span><span class="lang-ja">ユーロダラーの誕生</span><span class="lang-ko">유로달러의 탄생</span></span></div>
+              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Roosevelt's Gold Seizure</span><span class="lang-ja">ãƒ«ãƒ¼ã‚ºãƒ™ãƒ«ãƒˆã®é‡‘æ²¡åŽä»¤</span><span class="lang-ko">ë£¨ìŠ¤ë²¨íŠ¸ì˜ ê¸ˆ ëª°ìˆ˜ë ¹</span></span></div>
+              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">Keynes's Bancor</span><span class="lang-ja">ã‚±ã‚¤ãƒ³ã‚ºã®ãƒãƒ³ã‚³ãƒ¼ãƒ«</span><span class="lang-ko">ì¼€ì¸ì¦ˆì˜ ë°©ì½”ë¥´</span></span></div>
+              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Harry Dexter White: Architect or Spy?</span><span class="lang-ja">ãƒãƒªãƒ¼ãƒ»ãƒ‡ã‚¯ã‚¹ã‚¿ãƒ¼ãƒ»ãƒ›ãƒ¯ã‚¤ãƒˆ</span><span class="lang-ko">í•´ë¦¬ ë±ìŠ¤í„° í™”ì´íŠ¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Three Weeks in New Hampshire</span><span class="lang-ja">ãƒ‹ãƒ¥ãƒ¼ãƒãƒ³ãƒ—ã‚·ãƒ£ãƒ¼ã®3é€±é–“</span><span class="lang-ko">ë‰´í–„í”„ì…”ì˜ 3ì£¼</span></span></div>
+              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">The IMF's First Test: Suez 1956</span><span class="lang-ja">IMFã®æœ€åˆã®è©¦ç·´</span><span class="lang-ko">IMFì˜ ì²« ì‹œí—˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">The Birth of Eurodollars</span><span class="lang-ja">ãƒ¦ãƒ¼ãƒ­ãƒ€ãƒ©ãƒ¼ã®èª•ç”Ÿ</span><span class="lang-ko">ìœ ë¡œë‹¬ëŸ¬ì˜ íƒ„ìƒ</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-1">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-1">5</div>
-              <div class="part-info"><h3><span class="lang-en">Bretton Woods Collapse</span><span class="lang-ja">ブレトンウッズ崩壊</span><span class="lang-ko">브레튼우즈의 붕괴</span></h3><span>EP.26-30</span></div>
+              <div class="part-info"><h3><span class="lang-en">Bretton Woods Collapse</span><span class="lang-ja">ãƒ–ãƒ¬ãƒˆãƒ³ã‚¦ãƒƒã‚ºå´©å£Š</span><span class="lang-ko">ë¸Œë ˆíŠ¼ìš°ì¦ˆì˜ ë¶•ê´´</span></h3><span>EP.26-30</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Triffin's Prophecy</span><span class="lang-ja">トリフィンの予言</span><span class="lang-ko">트리핀의 예언</span></span></div>
-              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">De Gaulle's Gold Offensive</span><span class="lang-ja">ド・ゴールの金攻勢</span><span class="lang-ko">드골의 금 공세</span></span></div>
-              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">The London Gold Pool Collapse</span><span class="lang-ja">ロンドン金プール崩壊</span><span class="lang-ko">런던 금 풀 붕괴</span></span></div>
-              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">72 Hours at Camp David: Nixon Shock</span><span class="lang-ja">キャンプ・デービッド72時間</span><span class="lang-ko">캠프 데이비드 72시간</span></span></div>
-              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">The Birth of Petrodollars</span><span class="lang-ja">ペトロダラーの誕生</span><span class="lang-ko">페트로달러의 탄생</span></span></div>
+              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Triffin's Prophecy</span><span class="lang-ja">ãƒˆãƒªãƒ•ã‚£ãƒ³ã®äºˆè¨€</span><span class="lang-ko">íŠ¸ë¦¬í•€ì˜ ì˜ˆì–¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">De Gaulle's Gold Offensive</span><span class="lang-ja">ãƒ‰ãƒ»ã‚´ãƒ¼ãƒ«ã®é‡‘æ”»å‹¢</span><span class="lang-ko">ë“œê³¨ì˜ ê¸ˆ ê³µì„¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">The London Gold Pool Collapse</span><span class="lang-ja">ãƒ­ãƒ³ãƒ‰ãƒ³é‡‘ãƒ—ãƒ¼ãƒ«å´©å£Š</span><span class="lang-ko">ëŸ°ë˜ ê¸ˆ í’€ ë¶•ê´´</span></span></div>
+              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">72 Hours at Camp David: Nixon Shock</span><span class="lang-ja">ã‚­ãƒ£ãƒ³ãƒ—ãƒ»ãƒ‡ãƒ¼ãƒ“ãƒƒãƒ‰72æ™‚é–“</span><span class="lang-ko">ìº í”„ ë°ì´ë¹„ë“œ 72ì‹œê°„</span></span></div>
+              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">The Birth of Petrodollars</span><span class="lang-ja">ãƒšãƒˆãƒ­ãƒ€ãƒ©ãƒ¼ã®èª•ç”Ÿ</span><span class="lang-ko">íŽ˜íŠ¸ë¡œë‹¬ëŸ¬ì˜ íƒ„ìƒ</span></span></div>
             </div></div>
           </div>
         </div>
@@ -336,84 +340,84 @@
       <!-- SERIES 2 -->
       <div class="series-detail" id="series-2">
         <div class="page-header">
-          <h2 class="page-title"><span class="lang-en">Currency Hegemony</span><span class="lang-ja">通貨覇権</span><span class="lang-ko">통화 패권</span></h2>
-          <p class="page-question"><span class="lang-en">Who controls the world's money?</span><span class="lang-ja">誰が世界の貨幣を支配するのか？</span><span class="lang-ko">누가 세계의 돈을 지배하는가?</span></p>
-          <p class="page-desc">30 Episodes · 1663-2023</p>
+          <h2 class="page-title"><span class="lang-en">Currency Hegemony</span><span class="lang-ja">é€šè²¨è¦‡æ¨©</span><span class="lang-ko">í†µí™” íŒ¨ê¶Œ</span></h2>
+          <p class="page-question"><span class="lang-en">Who controls the world's money?</span><span class="lang-ja">èª°ãŒä¸–ç•Œã®è²¨å¹£ã‚’æ”¯é…ã™ã‚‹ã®ã‹ï¼Ÿ</span><span class="lang-ko">ëˆ„ê°€ ì„¸ê³„ì˜ ëˆì„ ì§€ë°°í•˜ëŠ”ê°€?</span></p>
+          <p class="page-desc">30 Episodes Â· 1663-2023</p>
         </div>
         <div class="parts-list">
           <div class="part-card part-card-2">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-2">1</div>
-              <div class="part-info"><h3><span class="lang-en">Age of Sterling</span><span class="lang-ja">ポンドの時代</span><span class="lang-ko">파운드의 시대</span></h3><span>EP.01-06</span></div>
+              <div class="part-info"><h3><span class="lang-en">Age of Sterling</span><span class="lang-ja">ãƒãƒ³ãƒ‰ã®æ™‚ä»£</span><span class="lang-ko">íŒŒìš´ë“œì˜ ì‹œëŒ€</span></h3><span>EP.01-06</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">The Guinea Coin</span><span class="lang-ja">ギニー金貨</span><span class="lang-ko">기니 금화</span></span></div>
-              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">The Fall of the Dutch Guilder</span><span class="lang-ja">オランダ・ギルダーの没落</span><span class="lang-ko">네덜란드 길더의 몰락</span></span></div>
-              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">Napoleonic Wars: Britain's Debt as Strength</span><span class="lang-ja">ナポレオン戦争</span><span class="lang-ko">나폴레옹 전쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">The Pound Bill of Exchange</span><span class="lang-ja">ポンド為替手形</span><span class="lang-ko">파운드 환어음</span></span></div>
-              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Undersea Cables: Infrastructure as Power</span><span class="lang-ja">海底ケーブル</span><span class="lang-ko">해저 케이블</span></span></div>
-              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">The Indian Rupee Trap</span><span class="lang-ja">インド・ルピーの罠</span><span class="lang-ko">인도 루피의 함정</span></span></div>
+              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">The Guinea Coin</span><span class="lang-ja">ã‚®ãƒ‹ãƒ¼é‡‘è²¨</span><span class="lang-ko">ê¸°ë‹ˆ ê¸ˆí™”</span></span></div>
+              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">The Fall of the Dutch Guilder</span><span class="lang-ja">ã‚ªãƒ©ãƒ³ãƒ€ãƒ»ã‚®ãƒ«ãƒ€ãƒ¼ã®æ²¡è½</span><span class="lang-ko">ë„¤ëœëž€ë“œ ê¸¸ë”ì˜ ëª°ë½</span></span></div>
+              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">Napoleonic Wars: Britain's Debt as Strength</span><span class="lang-ja">ãƒŠãƒãƒ¬ã‚ªãƒ³æˆ¦äº‰</span><span class="lang-ko">ë‚˜í´ë ˆì˜¹ ì „ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">The Pound Bill of Exchange</span><span class="lang-ja">ãƒãƒ³ãƒ‰ç‚ºæ›¿æ‰‹å½¢</span><span class="lang-ko">íŒŒìš´ë“œ í™˜ì–´ìŒ</span></span></div>
+              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Undersea Cables: Infrastructure as Power</span><span class="lang-ja">æµ·åº•ã‚±ãƒ¼ãƒ–ãƒ«</span><span class="lang-ko">í•´ì € ì¼€ì´ë¸”</span></span></div>
+              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">The Indian Rupee Trap</span><span class="lang-ja">ã‚¤ãƒ³ãƒ‰ãƒ»ãƒ«ãƒ”ãƒ¼ã®ç½ </span><span class="lang-ko">ì¸ë„ ë£¨í”¼ì˜ í•¨ì •</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-2">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-2">2</div>
-              <div class="part-info"><h3><span class="lang-en">The Handover</span><span class="lang-ja">覇権の移行</span><span class="lang-ko">패권의 이전</span></h3><span>EP.07-12</span></div>
+              <div class="part-info"><h3><span class="lang-en">The Handover</span><span class="lang-ja">è¦‡æ¨©ã®ç§»è¡Œ</span><span class="lang-ko">íŒ¨ê¶Œì˜ ì´ì „</span></h3><span>EP.07-12</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">WWI Debt: Britain Becomes Debtor</span><span class="lang-ja">第一次大戦債務</span><span class="lang-ko">1차대전 부채</span></span></div>
-              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">The April 1917 Deal</span><span class="lang-ja">1917年4月の取引</span><span class="lang-ko">1917년 4월의 거래</span></span></div>
-              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">The Sterling Crisis of 1931</span><span class="lang-ja">1931年ポンド危機</span><span class="lang-ko">1931년 파운드 위기</span></span></div>
-              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">The Sterling Bloc</span><span class="lang-ja">スターリング・ブロック</span><span class="lang-ko">스털링 블록</span></span></div>
-              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">The Price of Lend-Lease</span><span class="lang-ja">レンドリースの代価</span><span class="lang-ko">렌드리스의 대가</span></span></div>
-              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">The 1945 Anglo-American Loan</span><span class="lang-ja">1945年英米借款</span><span class="lang-ko">1945년 영미 차관</span></span></div>
+              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">WWI Debt: Britain Becomes Debtor</span><span class="lang-ja">ç¬¬ä¸€æ¬¡å¤§æˆ¦å‚µå‹™</span><span class="lang-ko">1ì°¨ëŒ€ì „ ë¶€ì±„</span></span></div>
+              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">The April 1917 Deal</span><span class="lang-ja">1917å¹´4æœˆã®å–å¼•</span><span class="lang-ko">1917ë…„ 4ì›”ì˜ ê±°ëž˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">The Sterling Crisis of 1931</span><span class="lang-ja">1931å¹´ãƒãƒ³ãƒ‰å±æ©Ÿ</span><span class="lang-ko">1931ë…„ íŒŒìš´ë“œ ìœ„ê¸°</span></span></div>
+              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">The Sterling Bloc</span><span class="lang-ja">ã‚¹ã‚¿ãƒ¼ãƒªãƒ³ã‚°ãƒ»ãƒ–ãƒ­ãƒƒã‚¯</span><span class="lang-ko">ìŠ¤í„¸ë§ ë¸”ë¡</span></span></div>
+              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">The Price of Lend-Lease</span><span class="lang-ja">ãƒ¬ãƒ³ãƒ‰ãƒªãƒ¼ã‚¹ã®ä»£ä¾¡</span><span class="lang-ko">ë Œë“œë¦¬ìŠ¤ì˜ ëŒ€ê°€</span></span></div>
+              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">The 1945 Anglo-American Loan</span><span class="lang-ja">1945å¹´è‹±ç±³å€Ÿæ¬¾</span><span class="lang-ko">1945ë…„ ì˜ë¯¸ ì°¨ê´€</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-2">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-2">3</div>
-              <div class="part-info"><h3><span class="lang-en">Dollar Dominance</span><span class="lang-ja">ドル支配</span><span class="lang-ko">달러 지배</span></h3><span>EP.13-18</span></div>
+              <div class="part-info"><h3><span class="lang-en">Dollar Dominance</span><span class="lang-ja">ãƒ‰ãƒ«æ”¯é…</span><span class="lang-ko">ë‹¬ëŸ¬ ì§€ë°°</span></h3><span>EP.13-18</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Fort Knox: 70% of World Gold</span><span class="lang-ja">フォートノックス</span><span class="lang-ko">포트 녹스</span></span></div>
-              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">The Marshall Plan's Real Purpose</span><span class="lang-ja">マーシャル・プランの真の目的</span><span class="lang-ko">마셜 플랜의 진짜 목적</span></span></div>
-              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">1958: The Turning Point</span><span class="lang-ja">1958年：転換点</span><span class="lang-ko">1958년: 전환점</span></span></div>
-              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">SWIFT: The Dollar's Nervous System</span><span class="lang-ja">SWIFT：ドルの神経系</span><span class="lang-ko">SWIFT: 달러의 신경망</span></span></div>
-              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Petrodollar Recycling</span><span class="lang-ja">ペトロダラー・リサイクリング</span><span class="lang-ko">페트로달러 재활용</span></span></div>
-              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">The Secret Saudi Treasury Account</span><span class="lang-ja">サウジの秘密財務省口座</span><span class="lang-ko">사우디의 비밀 재무부 계좌</span></span></div>
+              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Fort Knox: 70% of World Gold</span><span class="lang-ja">ãƒ•ã‚©ãƒ¼ãƒˆãƒŽãƒƒã‚¯ã‚¹</span><span class="lang-ko">í¬íŠ¸ ë…¹ìŠ¤</span></span></div>
+              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">The Marshall Plan's Real Purpose</span><span class="lang-ja">ãƒžãƒ¼ã‚·ãƒ£ãƒ«ãƒ»ãƒ—ãƒ©ãƒ³ã®çœŸã®ç›®çš„</span><span class="lang-ko">ë§ˆì…œ í”Œëžœì˜ ì§„ì§œ ëª©ì </span></span></div>
+              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">1958: The Turning Point</span><span class="lang-ja">1958å¹´ï¼šè»¢æ›ç‚¹</span><span class="lang-ko">1958ë…„: ì „í™˜ì </span></span></div>
+              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">SWIFT: The Dollar's Nervous System</span><span class="lang-ja">SWIFTï¼šãƒ‰ãƒ«ã®ç¥žçµŒç³»</span><span class="lang-ko">SWIFT: ë‹¬ëŸ¬ì˜ ì‹ ê²½ë§</span></span></div>
+              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Petrodollar Recycling</span><span class="lang-ja">ãƒšãƒˆãƒ­ãƒ€ãƒ©ãƒ¼ãƒ»ãƒªã‚µã‚¤ã‚¯ãƒªãƒ³ã‚°</span><span class="lang-ko">íŽ˜íŠ¸ë¡œë‹¬ëŸ¬ ìž¬í™œìš©</span></span></div>
+              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">The Secret Saudi Treasury Account</span><span class="lang-ja">ã‚µã‚¦ã‚¸ã®ç§˜å¯†è²¡å‹™çœå£åº§</span><span class="lang-ko">ì‚¬ìš°ë””ì˜ ë¹„ë°€ ìž¬ë¬´ë¶€ ê³„ì¢Œ</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-2">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-2">4</div>
-              <div class="part-info"><h3><span class="lang-en">Challengers</span><span class="lang-ja">挑戦者たち</span><span class="lang-ko">도전자들</span></h3><span>EP.19-24</span></div>
+              <div class="part-info"><h3><span class="lang-en">Challengers</span><span class="lang-ja">æŒ‘æˆ¦è€…ãŸã¡</span><span class="lang-ko">ë„ì „ìžë“¤</span></h3><span>EP.19-24</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">The Yen's Frustration</span><span class="lang-ja">円の挫折</span><span class="lang-ko">엔화의 좌절</span></span></div>
-              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">The Deutsche Mark's Choice</span><span class="lang-ja">マルクの選択</span><span class="lang-ko">마르크의 선택</span></span></div>
-              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">The Birth of the Euro</span><span class="lang-ja">ユーロの誕生</span><span class="lang-ko">유로의 탄생</span></span></div>
-              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">The Euro Crisis: 72 Hours from Collapse</span><span class="lang-ja">ユーロ危機</span><span class="lang-ko">유로 위기</span></span></div>
-              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">China's Yuan Push</span><span class="lang-ja">中国の人民元攻勢</span><span class="lang-ko">중국의 위안화 공세</span></span></div>
-              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Yuan in the SDR</span><span class="lang-ja">人民元SDR入り</span><span class="lang-ko">위안화 SDR 편입</span></span></div>
+              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">The Yen's Frustration</span><span class="lang-ja">å††ã®æŒ«æŠ˜</span><span class="lang-ko">ì—”í™”ì˜ ì¢Œì ˆ</span></span></div>
+              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">The Deutsche Mark's Choice</span><span class="lang-ja">ãƒžãƒ«ã‚¯ã®é¸æŠž</span><span class="lang-ko">ë§ˆë¥´í¬ì˜ ì„ íƒ</span></span></div>
+              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">The Birth of the Euro</span><span class="lang-ja">ãƒ¦ãƒ¼ãƒ­ã®èª•ç”Ÿ</span><span class="lang-ko">ìœ ë¡œì˜ íƒ„ìƒ</span></span></div>
+              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">The Euro Crisis: 72 Hours from Collapse</span><span class="lang-ja">ãƒ¦ãƒ¼ãƒ­å±æ©Ÿ</span><span class="lang-ko">ìœ ë¡œ ìœ„ê¸°</span></span></div>
+              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">China's Yuan Push</span><span class="lang-ja">ä¸­å›½ã®äººæ°‘å…ƒæ”»å‹¢</span><span class="lang-ko">ì¤‘êµ­ì˜ ìœ„ì•ˆí™” ê³µì„¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Yuan in the SDR</span><span class="lang-ja">äººæ°‘å…ƒSDRå…¥ã‚Š</span><span class="lang-ko">ìœ„ì•ˆí™” SDR íŽ¸ìž…</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-2">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-2">5</div>
-              <div class="part-info"><h3><span class="lang-en">Weaponizing the Dollar</span><span class="lang-ja">ドルの武器化</span><span class="lang-ko">달러의 무기화</span></h3><span>EP.25-30</span></div>
+              <div class="part-info"><h3><span class="lang-en">Weaponizing the Dollar</span><span class="lang-ja">ãƒ‰ãƒ«ã®æ­¦å™¨åŒ–</span><span class="lang-ko">ë‹¬ëŸ¬ì˜ ë¬´ê¸°í™”</span></h3><span>EP.25-30</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">Iran Sanctions: The Dollar as Weapon</span><span class="lang-ja">イラン制裁</span><span class="lang-ko">이란 제재</span></span></div>
-              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">The BNP Paribas $8.9B Fine</span><span class="lang-ja">BNPパリバ89億ドル罰金</span><span class="lang-ko">BNP 파리바 89억 달러 벌금</span></span></div>
-              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Russia's SWIFT Cutoff</span><span class="lang-ja">ロシアSWIFT遮断</span><span class="lang-ko">러시아 SWIFT 차단</span></span></div>
-              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">Russia's Response: De-Dollarization</span><span class="lang-ja">ロシアの対応</span><span class="lang-ko">러시아의 대응</span></span></div>
-              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">China's Alternative: CIPS vs SWIFT</span><span class="lang-ja">中国の代替システム</span><span class="lang-ko">중국의 대안 시스템</span></span></div>
-              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">Saudi Arabia Reconsidering</span><span class="lang-ja">サウジの再考</span><span class="lang-ko">사우디의 재고</span></span></div>
+              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">Iran Sanctions: The Dollar as Weapon</span><span class="lang-ja">ã‚¤ãƒ©ãƒ³åˆ¶è£</span><span class="lang-ko">ì´ëž€ ì œìž¬</span></span></div>
+              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">The BNP Paribas $8.9B Fine</span><span class="lang-ja">BNPãƒ‘ãƒªãƒ89å„„ãƒ‰ãƒ«ç½°é‡‘</span><span class="lang-ko">BNP íŒŒë¦¬ë°” 89ì–µ ë‹¬ëŸ¬ ë²Œê¸ˆ</span></span></div>
+              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Russia's SWIFT Cutoff</span><span class="lang-ja">ãƒ­ã‚·ã‚¢SWIFTé®æ–­</span><span class="lang-ko">ëŸ¬ì‹œì•„ SWIFT ì°¨ë‹¨</span></span></div>
+              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">Russia's Response: De-Dollarization</span><span class="lang-ja">ãƒ­ã‚·ã‚¢ã®å¯¾å¿œ</span><span class="lang-ko">ëŸ¬ì‹œì•„ì˜ ëŒ€ì‘</span></span></div>
+              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">China's Alternative: CIPS vs SWIFT</span><span class="lang-ja">ä¸­å›½ã®ä»£æ›¿ã‚·ã‚¹ãƒ†ãƒ </span><span class="lang-ko">ì¤‘êµ­ì˜ ëŒ€ì•ˆ ì‹œìŠ¤í…œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">Saudi Arabia Reconsidering</span><span class="lang-ja">ã‚µã‚¦ã‚¸ã®å†è€ƒ</span><span class="lang-ko">ì‚¬ìš°ë””ì˜ ìž¬ê³ </span></span></div>
             </div></div>
           </div>
         </div>
@@ -422,92 +426,92 @@
       <!-- SERIES 3 -->
       <div class="series-detail" id="series-3">
         <div class="page-header">
-          <h2 class="page-title"><span class="lang-en">Anatomy of Economic Crises</span><span class="lang-ja">経済危機の解剖</span><span class="lang-ko">경제 위기의 해부</span></h2>
-          <p class="page-question"><span class="lang-en">Why do systems collapse?</span><span class="lang-ja">なぜシステムは崩壊するのか？</span><span class="lang-ko">왜 시스템은 붕괴하는가?</span></p>
-          <p class="page-desc">30 Episodes · 1637-2023</p>
+          <h2 class="page-title"><span class="lang-en">Anatomy of Economic Crises</span><span class="lang-ja">çµŒæ¸ˆå±æ©Ÿã®è§£å‰–</span><span class="lang-ko">ê²½ì œ ìœ„ê¸°ì˜ í•´ë¶€</span></h2>
+          <p class="page-question"><span class="lang-en">Why do systems collapse?</span><span class="lang-ja">ãªãœã‚·ã‚¹ãƒ†ãƒ ã¯å´©å£Šã™ã‚‹ã®ã‹ï¼Ÿ</span><span class="lang-ko">ì™œ ì‹œìŠ¤í…œì€ ë¶•ê´´í•˜ëŠ”ê°€?</span></p>
+          <p class="page-desc">30 Episodes Â· 1637-2023</p>
         </div>
         <div class="parts-list">
           <div class="part-card part-card-3">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-3">1</div>
-              <div class="part-info"><h3><span class="lang-en">Original Bubbles</span><span class="lang-ja">最初のバブル</span><span class="lang-ko">최초의 버블들</span></h3><span>EP.01-05</span></div>
+              <div class="part-info"><h3><span class="lang-en">Original Bubbles</span><span class="lang-ja">æœ€åˆã®ãƒãƒ–ãƒ«</span><span class="lang-ko">ìµœì´ˆì˜ ë²„ë¸”ë“¤</span></h3><span>EP.01-05</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">Tulip Mania: What Really Happened</span><span class="lang-ja">チューリップ・バブルの真実</span><span class="lang-ko">튤립 버블의 진실</span></span></div>
-              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">The South Sea Bubble</span><span class="lang-ja">南海バブル</span><span class="lang-ko">남해 버블</span></span></div>
-              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">John Blunt's Fall</span><span class="lang-ja">ジョン・ブラントの没落</span><span class="lang-ko">존 블런트의 몰락</span></span></div>
-              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">The 1825 Panic</span><span class="lang-ja">1825年パニック</span><span class="lang-ko">1825년 공황</span></span></div>
-              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">The 1837 Panic: Jackson's Legacy</span><span class="lang-ja">1837年パニック</span><span class="lang-ko">1837년 공황</span></span></div>
+              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">Tulip Mania: What Really Happened</span><span class="lang-ja">ãƒãƒ¥ãƒ¼ãƒªãƒƒãƒ—ãƒ»ãƒãƒ–ãƒ«ã®çœŸå®Ÿ</span><span class="lang-ko">íŠ¤ë¦½ ë²„ë¸”ì˜ ì§„ì‹¤</span></span></div>
+              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">The South Sea Bubble</span><span class="lang-ja">å—æµ·ãƒãƒ–ãƒ«</span><span class="lang-ko">ë‚¨í•´ ë²„ë¸”</span></span></div>
+              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">John Blunt's Fall</span><span class="lang-ja">ã‚¸ãƒ§ãƒ³ãƒ»ãƒ–ãƒ©ãƒ³ãƒˆã®æ²¡è½</span><span class="lang-ko">ì¡´ ë¸”ëŸ°íŠ¸ì˜ ëª°ë½</span></span></div>
+              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">The 1825 Panic</span><span class="lang-ja">1825å¹´ãƒ‘ãƒ‹ãƒƒã‚¯</span><span class="lang-ko">1825ë…„ ê³µí™©</span></span></div>
+              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">The 1837 Panic: Jackson's Legacy</span><span class="lang-ja">1837å¹´ãƒ‘ãƒ‹ãƒƒã‚¯</span><span class="lang-ko">1837ë…„ ê³µí™©</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-3">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-3">2</div>
-              <div class="part-info"><h3><span class="lang-en">19th Century Crises</span><span class="lang-ja">19世紀の危機</span><span class="lang-ko">19세기 위기</span></h3><span>EP.06-10</span></div>
+              <div class="part-info"><h3><span class="lang-en">19th Century Crises</span><span class="lang-ja">19ä¸–ç´€ã®å±æ©Ÿ</span><span class="lang-ko">19ì„¸ê¸° ìœ„ê¸°</span></h3><span>EP.06-10</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">The 1857 Panic: First Global Crisis</span><span class="lang-ja">1857年パニック</span><span class="lang-ko">1857년 공황</span></span></div>
-              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Overend Gurney 1866</span><span class="lang-ja">オーバーエンド・ガーニー</span><span class="lang-ko">오버렌드 거니</span></span></div>
-              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">The 1873 Long Depression</span><span class="lang-ja">1873年大不況</span><span class="lang-ko">1873년 대불황</span></span></div>
-              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">Grant & Ward 1884</span><span class="lang-ja">グラント＆ワード</span><span class="lang-ko">그랜트 & 워드</span></span></div>
-              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">The 1893 Panic</span><span class="lang-ja">1893年パニック</span><span class="lang-ko">1893년 공황</span></span></div>
+              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">The 1857 Panic: First Global Crisis</span><span class="lang-ja">1857å¹´ãƒ‘ãƒ‹ãƒƒã‚¯</span><span class="lang-ko">1857ë…„ ê³µí™©</span></span></div>
+              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Overend Gurney 1866</span><span class="lang-ja">ã‚ªãƒ¼ãƒãƒ¼ã‚¨ãƒ³ãƒ‰ãƒ»ã‚¬ãƒ¼ãƒ‹ãƒ¼</span><span class="lang-ko">ì˜¤ë²„ë Œë“œ ê±°ë‹ˆ</span></span></div>
+              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">The 1873 Long Depression</span><span class="lang-ja">1873å¹´å¤§ä¸æ³</span><span class="lang-ko">1873ë…„ ëŒ€ë¶ˆí™©</span></span></div>
+              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">Grant & Ward 1884</span><span class="lang-ja">ã‚°ãƒ©ãƒ³ãƒˆï¼†ãƒ¯ãƒ¼ãƒ‰</span><span class="lang-ko">ê·¸ëžœíŠ¸ & ì›Œë“œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">The 1893 Panic</span><span class="lang-ja">1893å¹´ãƒ‘ãƒ‹ãƒƒã‚¯</span><span class="lang-ko">1893ë…„ ê³µí™©</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-3">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-3">3</div>
-              <div class="part-info"><h3><span class="lang-en">Great Depression Deep Dive</span><span class="lang-ja">大恐慌深層分析</span><span class="lang-ko">대공황 심층 분석</span></h3><span>EP.11-16</span></div>
+              <div class="part-info"><h3><span class="lang-en">Great Depression Deep Dive</span><span class="lang-ja">å¤§ææ…Œæ·±å±¤åˆ†æž</span><span class="lang-ko">ëŒ€ê³µí™© ì‹¬ì¸µ ë¶„ì„</span></h3><span>EP.11-16</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">September 1929: Before the Fall</span><span class="lang-ja">1929年9月</span><span class="lang-ko">1929년 9월</span></span></div>
-              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Bank of United States Failure</span><span class="lang-ja">合衆国銀行破綻</span><span class="lang-ko">미합중국은행 파산</span></span></div>
-              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Creditanstalt</span><span class="lang-ja">クレディタンシュタルト</span><span class="lang-ko">크레디탄슈탈트</span></span></div>
-              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">The Hoover Moratorium</span><span class="lang-ja">フーバー・モラトリアム</span><span class="lang-ko">후버 모라토리엄</span></span></div>
-              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Bank Holiday 1933</span><span class="lang-ja">銀行休業1933</span><span class="lang-ko">은행 휴업 1933</span></span></div>
-              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Prohibition Repeal Economics</span><span class="lang-ja">禁酒法廃止の経済学</span><span class="lang-ko">금주법 폐지의 경제학</span></span></div>
+              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">September 1929: Before the Fall</span><span class="lang-ja">1929å¹´9æœˆ</span><span class="lang-ko">1929ë…„ 9ì›”</span></span></div>
+              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Bank of United States Failure</span><span class="lang-ja">åˆè¡†å›½éŠ€è¡Œç ´ç¶»</span><span class="lang-ko">ë¯¸í•©ì¤‘êµ­ì€í–‰ íŒŒì‚°</span></span></div>
+              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Creditanstalt</span><span class="lang-ja">ã‚¯ãƒ¬ãƒ‡ã‚£ã‚¿ãƒ³ã‚·ãƒ¥ã‚¿ãƒ«ãƒˆ</span><span class="lang-ko">í¬ë ˆë””íƒ„ìŠˆíƒˆíŠ¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">The Hoover Moratorium</span><span class="lang-ja">ãƒ•ãƒ¼ãƒãƒ¼ãƒ»ãƒ¢ãƒ©ãƒˆãƒªã‚¢ãƒ </span><span class="lang-ko">í›„ë²„ ëª¨ë¼í† ë¦¬ì—„</span></span></div>
+              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Bank Holiday 1933</span><span class="lang-ja">éŠ€è¡Œä¼‘æ¥­1933</span><span class="lang-ko">ì€í–‰ íœ´ì—… 1933</span></span></div>
+              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Prohibition Repeal Economics</span><span class="lang-ja">ç¦é…’æ³•å»ƒæ­¢ã®çµŒæ¸ˆå­¦</span><span class="lang-ko">ê¸ˆì£¼ë²• íì§€ì˜ ê²½ì œí•™</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-3">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-3">4</div>
-              <div class="part-info"><h3><span class="lang-en">Postwar Crises</span><span class="lang-ja">戦後の危機</span><span class="lang-ko">전후 위기</span></h3><span>EP.17-22</span></div>
+              <div class="part-info"><h3><span class="lang-en">Postwar Crises</span><span class="lang-ja">æˆ¦å¾Œã®å±æ©Ÿ</span><span class="lang-ko">ì „í›„ ìœ„ê¸°</span></h3><span>EP.17-22</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">The 1973 Oil Shock</span><span class="lang-ja">1973年オイルショック</span><span class="lang-ko">1973년 오일 쇼크</span></span></div>
-              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Herstatt Bank 1974</span><span class="lang-ja">ヘルシュタット銀行</span><span class="lang-ko">헤르슈타트 은행</span></span></div>
-              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Volcker's Saturday Night Special</span><span class="lang-ja">ボルカーの土曜夜</span><span class="lang-ko">볼커의 토요일 밤</span></span></div>
-              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Mexico 1982</span><span class="lang-ja">メキシコ1982</span><span class="lang-ko">멕시코 1982</span></span></div>
-              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">Continental Illinois 1984</span><span class="lang-ja">コンチネンタル・イリノイ</span><span class="lang-ko">컨티넨탈 일리노이</span></span></div>
-              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Black Monday 1987</span><span class="lang-ja">ブラック・マンデー</span><span class="lang-ko">블랙 먼데이</span></span></div>
+              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">The 1973 Oil Shock</span><span class="lang-ja">1973å¹´ã‚ªã‚¤ãƒ«ã‚·ãƒ§ãƒƒã‚¯</span><span class="lang-ko">1973ë…„ ì˜¤ì¼ ì‡¼í¬</span></span></div>
+              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Herstatt Bank 1974</span><span class="lang-ja">ãƒ˜ãƒ«ã‚·ãƒ¥ã‚¿ãƒƒãƒˆéŠ€è¡Œ</span><span class="lang-ko">í—¤ë¥´ìŠˆíƒ€íŠ¸ ì€í–‰</span></span></div>
+              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Volcker's Saturday Night Special</span><span class="lang-ja">ãƒœãƒ«ã‚«ãƒ¼ã®åœŸæ›œå¤œ</span><span class="lang-ko">ë³¼ì»¤ì˜ í† ìš”ì¼ ë°¤</span></span></div>
+              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Mexico 1982</span><span class="lang-ja">ãƒ¡ã‚­ã‚·ã‚³1982</span><span class="lang-ko">ë©•ì‹œì½” 1982</span></span></div>
+              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">Continental Illinois 1984</span><span class="lang-ja">ã‚³ãƒ³ãƒãƒãƒ³ã‚¿ãƒ«ãƒ»ã‚¤ãƒªãƒŽã‚¤</span><span class="lang-ko">ì»¨í‹°ë„¨íƒˆ ì¼ë¦¬ë…¸ì´</span></span></div>
+              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Black Monday 1987</span><span class="lang-ja">ãƒ–ãƒ©ãƒƒã‚¯ãƒ»ãƒžãƒ³ãƒ‡ãƒ¼</span><span class="lang-ko">ë¸”ëž™ ë¨¼ë°ì´</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-3">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-3">5</div>
-              <div class="part-info"><h3><span class="lang-en">1990s Chain Reaction</span><span class="lang-ja">1990年代連鎖</span><span class="lang-ko">1990년대 연쇄</span></h3><span>EP.23-26</span></div>
+              <div class="part-info"><h3><span class="lang-en">1990s Chain Reaction</span><span class="lang-ja">1990å¹´ä»£é€£éŽ–</span><span class="lang-ko">1990ë…„ëŒ€ ì—°ì‡„</span></h3><span>EP.23-26</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Japan's Bubble Burst</span><span class="lang-ja">日本バブル崩壊</span><span class="lang-ko">일본 버블 붕괴</span></span></div>
-              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Tequila Crisis 1994</span><span class="lang-ja">テキーラ危機</span><span class="lang-ko">테킬라 위기</span></span></div>
-              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">July 2, 1997: The Day the Baht Broke</span><span class="lang-ja">1997年7月2日</span><span class="lang-ko">1997년 7월 2일</span></span></div>
-              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">December 3, 1997: Korea Signs IMF</span><span class="lang-ja">韓国IMF署名</span><span class="lang-ko">한국 IMF 서명</span></span></div>
+              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Japan's Bubble Burst</span><span class="lang-ja">æ—¥æœ¬ãƒãƒ–ãƒ«å´©å£Š</span><span class="lang-ko">ì¼ë³¸ ë²„ë¸” ë¶•ê´´</span></span></div>
+              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Tequila Crisis 1994</span><span class="lang-ja">ãƒ†ã‚­ãƒ¼ãƒ©å±æ©Ÿ</span><span class="lang-ko">í…Œí‚¬ë¼ ìœ„ê¸°</span></span></div>
+              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">July 2, 1997: The Day the Baht Broke</span><span class="lang-ja">1997å¹´7æœˆ2æ—¥</span><span class="lang-ko">1997ë…„ 7ì›” 2ì¼</span></span></div>
+              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">December 3, 1997: Korea Signs IMF</span><span class="lang-ja">éŸ“å›½IMFç½²å</span><span class="lang-ko">í•œêµ­ IMF ì„œëª…</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-3">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-3">6</div>
-              <div class="part-info"><h3><span class="lang-en">21st Century Crises</span><span class="lang-ja">21世紀の危機</span><span class="lang-ko">21세기 위기</span></h3><span>EP.27-30</span></div>
+              <div class="part-info"><h3><span class="lang-en">21st Century Crises</span><span class="lang-ja">21ä¸–ç´€ã®å±æ©Ÿ</span><span class="lang-ko">21ì„¸ê¸° ìœ„ê¸°</span></h3><span>EP.27-30</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
               <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">LTCM 1998</span><span class="lang-ja">LTCM</span><span class="lang-ko">LTCM</span></span></div>
-              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">September 15, 2008: Lehman Weekend</span><span class="lang-ja">リーマン週末</span><span class="lang-ko">리먼 주말</span></span></div>
-              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">AIG's Hidden Beneficiaries</span><span class="lang-ja">AIG救済の隠れた受益者</span><span class="lang-ko">AIG 구제의 숨겨진 수혜자들</span></span></div>
+              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">September 15, 2008: Lehman Weekend</span><span class="lang-ja">ãƒªãƒ¼ãƒžãƒ³é€±æœ«</span><span class="lang-ko">ë¦¬ë¨¼ ì£¼ë§</span></span></div>
+              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">AIG's Hidden Beneficiaries</span><span class="lang-ja">AIGæ•‘æ¸ˆã®éš ã‚ŒãŸå—ç›Šè€…</span><span class="lang-ko">AIG êµ¬ì œì˜ ìˆ¨ê²¨ì§„ ìˆ˜í˜œìžë“¤</span></span></div>
               <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">SVB 2023: Bank Run at Twitter Speed</span><span class="lang-ja">SVB 2023</span><span class="lang-ko">SVB 2023</span></span></div>
             </div></div>
           </div>
@@ -517,93 +521,93 @@
       <!-- SERIES 4 -->
       <div class="series-detail" id="series-4">
         <div class="page-header">
-          <h2 class="page-title"><span class="lang-en">A History of Modern Trade</span><span class="lang-ja">近代貿易史</span><span class="lang-ko">근대 무역사</span></h2>
-          <p class="page-question"><span class="lang-en">Open borders or closed?</span><span class="lang-ja">国境を開くか閉じるか？</span><span class="lang-ko">국경을 열 것인가 닫을 것인가?</span></p>
-          <p class="page-desc">30 Episodes · 1651-2022</p>
+          <h2 class="page-title"><span class="lang-en">A History of Modern Trade</span><span class="lang-ja">è¿‘ä»£è²¿æ˜“å²</span><span class="lang-ko">ê·¼ëŒ€ ë¬´ì—­ì‚¬</span></h2>
+          <p class="page-question"><span class="lang-en">Open borders or closed?</span><span class="lang-ja">å›½å¢ƒã‚’é–‹ãã‹é–‰ã˜ã‚‹ã‹ï¼Ÿ</span><span class="lang-ko">êµ­ê²½ì„ ì—´ ê²ƒì¸ê°€ ë‹«ì„ ê²ƒì¸ê°€?</span></p>
+          <p class="page-desc">30 Episodes Â· 1651-2022</p>
         </div>
         <div class="parts-list">
           <div class="part-card part-card-4">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-4">1</div>
-              <div class="part-info"><h3><span class="lang-en">Mercantilism and Trade Wars</span><span class="lang-ja">重商主義と貿易戦争</span><span class="lang-ko">중상주의와 무역 전쟁</span></h3><span>EP.01-05</span></div>
+              <div class="part-info"><h3><span class="lang-en">Mercantilism and Trade Wars</span><span class="lang-ja">é‡å•†ä¸»ç¾©ã¨è²¿æ˜“æˆ¦äº‰</span><span class="lang-ko">ì¤‘ìƒì£¼ì˜ì™€ ë¬´ì—­ ì „ìŸ</span></h3><span>EP.01-05</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">Navigation Acts 1651</span><span class="lang-ja">航海法1651</span><span class="lang-ko">항해법 1651</span></span></div>
-              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">Colbert's Tariff Wall</span><span class="lang-ja">コルベールの関税障壁</span><span class="lang-ko">콜베르의 관세 장벽</span></span></div>
-              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">East India Company Wars</span><span class="lang-ja">東インド会社戦争</span><span class="lang-ko">동인도회사 전쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">Tea vs Opium</span><span class="lang-ja">茶vsアヘン</span><span class="lang-ko">차 vs 아편</span></span></div>
-              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">The Boston Tea Party's Real Cause</span><span class="lang-ja">ボストン茶会事件</span><span class="lang-ko">보스턴 차 사건</span></span></div>
+              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">Navigation Acts 1651</span><span class="lang-ja">èˆªæµ·æ³•1651</span><span class="lang-ko">í•­í•´ë²• 1651</span></span></div>
+              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">Colbert's Tariff Wall</span><span class="lang-ja">ã‚³ãƒ«ãƒ™ãƒ¼ãƒ«ã®é–¢ç¨Žéšœå£</span><span class="lang-ko">ì½œë² ë¥´ì˜ ê´€ì„¸ ìž¥ë²½</span></span></div>
+              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">East India Company Wars</span><span class="lang-ja">æ±ã‚¤ãƒ³ãƒ‰ä¼šç¤¾æˆ¦äº‰</span><span class="lang-ko">ë™ì¸ë„íšŒì‚¬ ì „ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">Tea vs Opium</span><span class="lang-ja">èŒ¶vsã‚¢ãƒ˜ãƒ³</span><span class="lang-ko">ì°¨ vs ì•„íŽ¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">The Boston Tea Party's Real Cause</span><span class="lang-ja">ãƒœã‚¹ãƒˆãƒ³èŒ¶ä¼šäº‹ä»¶</span><span class="lang-ko">ë³´ìŠ¤í„´ ì°¨ ì‚¬ê±´</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-4">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-4">2</div>
-              <div class="part-info"><h3><span class="lang-en">Free Trade's Triumph</span><span class="lang-ja">自由貿易の勝利</span><span class="lang-ko">자유무역의 승리</span></h3><span>EP.06-11</span></div>
+              <div class="part-info"><h3><span class="lang-en">Free Trade's Triumph</span><span class="lang-ja">è‡ªç”±è²¿æ˜“ã®å‹åˆ©</span><span class="lang-ko">ìžìœ ë¬´ì—­ì˜ ìŠ¹ë¦¬</span></h3><span>EP.06-11</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">Corn Laws Repeal 1846</span><span class="lang-ja">穀物法廃止</span><span class="lang-ko">곡물법 폐지</span></span></div>
-              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">The Anti-Corn Law League</span><span class="lang-ja">反穀物法同盟</span><span class="lang-ko">반곡물법 동맹</span></span></div>
-              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">Cobden-Chevalier Treaty</span><span class="lang-ja">コブデン・シュヴァリエ条約</span><span class="lang-ko">콥든-슈발리에 조약</span></span></div>
-              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">The American Exception</span><span class="lang-ja">アメリカの例外</span><span class="lang-ko">미국의 예외</span></span></div>
-              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">Suez Canal 1869</span><span class="lang-ja">スエズ運河</span><span class="lang-ko">수에즈 운하</span></span></div>
-              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">The Grain Invasion</span><span class="lang-ja">穀物侵入</span><span class="lang-ko">곡물 침공</span></span></div>
+              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">Corn Laws Repeal 1846</span><span class="lang-ja">ç©€ç‰©æ³•å»ƒæ­¢</span><span class="lang-ko">ê³¡ë¬¼ë²• íì§€</span></span></div>
+              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">The Anti-Corn Law League</span><span class="lang-ja">åç©€ç‰©æ³•åŒç›Ÿ</span><span class="lang-ko">ë°˜ê³¡ë¬¼ë²• ë™ë§¹</span></span></div>
+              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">Cobden-Chevalier Treaty</span><span class="lang-ja">ã‚³ãƒ–ãƒ‡ãƒ³ãƒ»ã‚·ãƒ¥ãƒ´ã‚¡ãƒªã‚¨æ¡ç´„</span><span class="lang-ko">ì½¥ë“ -ìŠˆë°œë¦¬ì— ì¡°ì•½</span></span></div>
+              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">The American Exception</span><span class="lang-ja">ã‚¢ãƒ¡ãƒªã‚«ã®ä¾‹å¤–</span><span class="lang-ko">ë¯¸êµ­ì˜ ì˜ˆì™¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">Suez Canal 1869</span><span class="lang-ja">ã‚¹ã‚¨ã‚ºé‹æ²³</span><span class="lang-ko">ìˆ˜ì—ì¦ˆ ìš´í•˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">The Grain Invasion</span><span class="lang-ja">ç©€ç‰©ä¾µå…¥</span><span class="lang-ko">ê³¡ë¬¼ ì¹¨ê³µ</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-4">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-4">3</div>
-              <div class="part-info"><h3><span class="lang-en">Protection Returns</span><span class="lang-ja">保護主義の復活</span><span class="lang-ko">보호주의의 귀환</span></h3><span>EP.12-16</span></div>
+              <div class="part-info"><h3><span class="lang-en">Protection Returns</span><span class="lang-ja">ä¿è­·ä¸»ç¾©ã®å¾©æ´»</span><span class="lang-ko">ë³´í˜¸ì£¼ì˜ì˜ ê·€í™˜</span></h3><span>EP.12-16</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Bismarck's Turn</span><span class="lang-ja">ビスマルクの転換</span><span class="lang-ko">비스마르크의 전환</span></span></div>
-              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">McKinley Tariff</span><span class="lang-ja">マッキンリー関税</span><span class="lang-ko">맥킨리 관세</span></span></div>
-              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">Meiji Japan's Tariff Humiliation</span><span class="lang-ja">明治日本の関税屈辱</span><span class="lang-ko">메이지 일본의 관세 굴욕</span></span></div>
-              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Ottawa Agreements</span><span class="lang-ja">オタワ協定</span><span class="lang-ko">오타와 협정</span></span></div>
-              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Smoot-Hawley</span><span class="lang-ja">スムート・ホーリー</span><span class="lang-ko">스무트-홀리</span></span></div>
+              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Bismarck's Turn</span><span class="lang-ja">ãƒ“ã‚¹ãƒžãƒ«ã‚¯ã®è»¢æ›</span><span class="lang-ko">ë¹„ìŠ¤ë§ˆë¥´í¬ì˜ ì „í™˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">McKinley Tariff</span><span class="lang-ja">ãƒžãƒƒã‚­ãƒ³ãƒªãƒ¼é–¢ç¨Ž</span><span class="lang-ko">ë§¥í‚¨ë¦¬ ê´€ì„¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">Meiji Japan's Tariff Humiliation</span><span class="lang-ja">æ˜Žæ²»æ—¥æœ¬ã®é–¢ç¨Žå±ˆè¾±</span><span class="lang-ko">ë©”ì´ì§€ ì¼ë³¸ì˜ ê´€ì„¸ êµ´ìš•</span></span></div>
+              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Ottawa Agreements</span><span class="lang-ja">ã‚ªã‚¿ãƒ¯å”å®š</span><span class="lang-ko">ì˜¤íƒ€ì™€ í˜‘ì •</span></span></div>
+              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Smoot-Hawley</span><span class="lang-ja">ã‚¹ãƒ ãƒ¼ãƒˆãƒ»ãƒ›ãƒ¼ãƒªãƒ¼</span><span class="lang-ko">ìŠ¤ë¬´íŠ¸-í™€ë¦¬</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-4">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-4">4</div>
-              <div class="part-info"><h3><span class="lang-en">Postwar Trade Order</span><span class="lang-ja">戦後貿易秩序</span><span class="lang-ko">전후 무역 질서</span></h3><span>EP.17-22</span></div>
+              <div class="part-info"><h3><span class="lang-en">Postwar Trade Order</span><span class="lang-ja">æˆ¦å¾Œè²¿æ˜“ç§©åº</span><span class="lang-ko">ì „í›„ ë¬´ì—­ ì§ˆì„œ</span></h3><span>EP.17-22</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">ITO Failure</span><span class="lang-ja">ITOの失敗</span><span class="lang-ko">ITO의 실패</span></span></div>
-              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">GATT Geneva Round</span><span class="lang-ja">GATTジュネーブ</span><span class="lang-ko">GATT 제네바</span></span></div>
-              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Kennedy Round</span><span class="lang-ja">ケネディ・ラウンド</span><span class="lang-ko">케네디 라운드</span></span></div>
-              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">The Chicken War of 1963</span><span class="lang-ja">チキン戦争</span><span class="lang-ko">닭 전쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">Multi-Fiber Arrangement</span><span class="lang-ja">多国間繊維協定</span><span class="lang-ko">다자간섬유협정</span></span></div>
-              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Tokyo Round</span><span class="lang-ja">東京ラウンド</span><span class="lang-ko">도쿄 라운드</span></span></div>
+              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">ITO Failure</span><span class="lang-ja">ITOã®å¤±æ•—</span><span class="lang-ko">ITOì˜ ì‹¤íŒ¨</span></span></div>
+              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">GATT Geneva Round</span><span class="lang-ja">GATTã‚¸ãƒ¥ãƒãƒ¼ãƒ–</span><span class="lang-ko">GATT ì œë„¤ë°”</span></span></div>
+              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Kennedy Round</span><span class="lang-ja">ã‚±ãƒãƒ‡ã‚£ãƒ»ãƒ©ã‚¦ãƒ³ãƒ‰</span><span class="lang-ko">ì¼€ë„¤ë”” ë¼ìš´ë“œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">The Chicken War of 1963</span><span class="lang-ja">ãƒã‚­ãƒ³æˆ¦äº‰</span><span class="lang-ko">ë‹­ ì „ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">Multi-Fiber Arrangement</span><span class="lang-ja">å¤šå›½é–“ç¹Šç¶­å”å®š</span><span class="lang-ko">ë‹¤ìžê°„ì„¬ìœ í˜‘ì •</span></span></div>
+              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Tokyo Round</span><span class="lang-ja">æ±äº¬ãƒ©ã‚¦ãƒ³ãƒ‰</span><span class="lang-ko">ë„ì¿„ ë¼ìš´ë“œ</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-4">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-4">5</div>
-              <div class="part-info"><h3><span class="lang-en">WTO Era</span><span class="lang-ja">WTO時代</span><span class="lang-ko">WTO 시대</span></h3><span>EP.23-26</span></div>
+              <div class="part-info"><h3><span class="lang-en">WTO Era</span><span class="lang-ja">WTOæ™‚ä»£</span><span class="lang-ko">WTO ì‹œëŒ€</span></h3><span>EP.23-26</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Uruguay Round</span><span class="lang-ja">ウルグアイ・ラウンド</span><span class="lang-ko">우루과이 라운드</span></span></div>
-              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Seattle 1999</span><span class="lang-ja">シアトル1999</span><span class="lang-ko">시애틀 1999</span></span></div>
-              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">China Joins WTO</span><span class="lang-ja">中国WTO加盟</span><span class="lang-ko">중국 WTO 가입</span></span></div>
-              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Doha Round Death</span><span class="lang-ja">ドーハ・ラウンドの死</span><span class="lang-ko">도하 라운드의 죽음</span></span></div>
+              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Uruguay Round</span><span class="lang-ja">ã‚¦ãƒ«ã‚°ã‚¢ã‚¤ãƒ»ãƒ©ã‚¦ãƒ³ãƒ‰</span><span class="lang-ko">ìš°ë£¨ê³¼ì´ ë¼ìš´ë“œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Seattle 1999</span><span class="lang-ja">ã‚·ã‚¢ãƒˆãƒ«1999</span><span class="lang-ko">ì‹œì• í‹€ 1999</span></span></div>
+              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">China Joins WTO</span><span class="lang-ja">ä¸­å›½WTOåŠ ç›Ÿ</span><span class="lang-ko">ì¤‘êµ­ WTO ê°€ìž…</span></span></div>
+              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Doha Round Death</span><span class="lang-ja">ãƒ‰ãƒ¼ãƒãƒ»ãƒ©ã‚¦ãƒ³ãƒ‰ã®æ­»</span><span class="lang-ko">ë„í•˜ ë¼ìš´ë“œì˜ ì£½ìŒ</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-4">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-4">6</div>
-              <div class="part-info"><h3><span class="lang-en">Trade War Returns</span><span class="lang-ja">貿易戦争の帰還</span><span class="lang-ko">무역전쟁의 귀환</span></h3><span>EP.27-30</span></div>
+              <div class="part-info"><h3><span class="lang-en">Trade War Returns</span><span class="lang-ja">è²¿æ˜“æˆ¦äº‰ã®å¸°é‚„</span><span class="lang-ko">ë¬´ì—­ì „ìŸì˜ ê·€í™˜</span></h3><span>EP.27-30</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Section 232 Revival</span><span class="lang-ja">232条復活</span><span class="lang-ko">232조 부활</span></span></div>
-              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">July 6, 2018: US-China Trade War</span><span class="lang-ja">米中貿易戦争</span><span class="lang-ko">미중 무역전쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">Huawei Sanctions</span><span class="lang-ja">ファーウェイ制裁</span><span class="lang-ko">화웨이 제재</span></span></div>
-              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">CHIPS Act & IRA 2022</span><span class="lang-ja">CHIPS法とIRA</span><span class="lang-ko">CHIPS법 & IRA</span></span></div>
+              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Section 232 Revival</span><span class="lang-ja">232æ¡å¾©æ´»</span><span class="lang-ko">232ì¡° ë¶€í™œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">July 6, 2018: US-China Trade War</span><span class="lang-ja">ç±³ä¸­è²¿æ˜“æˆ¦äº‰</span><span class="lang-ko">ë¯¸ì¤‘ ë¬´ì—­ì „ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">Huawei Sanctions</span><span class="lang-ja">ãƒ•ã‚¡ãƒ¼ã‚¦ã‚§ã‚¤åˆ¶è£</span><span class="lang-ko">í™”ì›¨ì´ ì œìž¬</span></span></div>
+              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">CHIPS Act & IRA 2022</span><span class="lang-ja">CHIPSæ³•ã¨IRA</span><span class="lang-ko">CHIPSë²• & IRA</span></span></div>
             </div></div>
           </div>
         </div>
@@ -612,93 +616,93 @@
       <!-- SERIES 5 -->
       <div class="series-detail" id="series-5">
         <div class="page-header">
-          <h2 class="page-title"><span class="lang-en">The Developmental State</span><span class="lang-ja">発展国家モデル</span><span class="lang-ko">발전국가 모델</span></h2>
-          <p class="page-question"><span class="lang-en">How do late developers catch up?</span><span class="lang-ja">後発国はいかにして追いついたか？</span><span class="lang-ko">후발국은 어떻게 따라잡는가?</span></p>
-          <p class="page-desc">30 Episodes · 1868-present</p>
+          <h2 class="page-title"><span class="lang-en">The Developmental State</span><span class="lang-ja">ç™ºå±•å›½å®¶ãƒ¢ãƒ‡ãƒ«</span><span class="lang-ko">ë°œì „êµ­ê°€ ëª¨ë¸</span></h2>
+          <p class="page-question"><span class="lang-en">How do late developers catch up?</span><span class="lang-ja">å¾Œç™ºå›½ã¯ã„ã‹ã«ã—ã¦è¿½ã„ã¤ã„ãŸã‹ï¼Ÿ</span><span class="lang-ko">í›„ë°œêµ­ì€ ì–´ë–»ê²Œ ë”°ë¼ìž¡ëŠ”ê°€?</span></p>
+          <p class="page-desc">30 Episodes Â· 1868-present</p>
         </div>
         <div class="parts-list">
           <div class="part-card part-card-5">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-5">1</div>
-              <div class="part-info"><h3><span class="lang-en">Meiji Japan Prototype</span><span class="lang-ja">明治日本の原型</span><span class="lang-ko">메이지 일본의 원형</span></h3><span>EP.01-05</span></div>
+              <div class="part-info"><h3><span class="lang-en">Meiji Japan Prototype</span><span class="lang-ja">æ˜Žæ²»æ—¥æœ¬ã®åŽŸåž‹</span><span class="lang-ko">ë©”ì´ì§€ ì¼ë³¸ì˜ ì›í˜•</span></h3><span>EP.01-05</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">The Iwakura Mission</span><span class="lang-ja">岩倉使節団</span><span class="lang-ko">이와쿠라 사절단</span></span></div>
-              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">State Model Factories</span><span class="lang-ja">官営模範工場</span><span class="lang-ko">관영 모범공장</span></span></div>
-              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">Matsukata Deflation</span><span class="lang-ja">松方デフレ</span><span class="lang-ko">마쓰카타 디플레이션</span></span></div>
-              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">Yawata Steel Works</span><span class="lang-ja">八幡製鉄所</span><span class="lang-ko">야하타 제철소</span></span></div>
-              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Female Textile Workers</span><span class="lang-ja">女性紡績労働者</span><span class="lang-ko">여성 방직 노동자</span></span></div>
+              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">The Iwakura Mission</span><span class="lang-ja">å²©å€‰ä½¿ç¯€å›£</span><span class="lang-ko">ì´ì™€ì¿ ë¼ ì‚¬ì ˆë‹¨</span></span></div>
+              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">State Model Factories</span><span class="lang-ja">å®˜å–¶æ¨¡ç¯„å·¥å ´</span><span class="lang-ko">ê´€ì˜ ëª¨ë²”ê³µìž¥</span></span></div>
+              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">Matsukata Deflation</span><span class="lang-ja">æ¾æ–¹ãƒ‡ãƒ•ãƒ¬</span><span class="lang-ko">ë§ˆì“°ì¹´íƒ€ ë””í”Œë ˆì´ì…˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">Yawata Steel Works</span><span class="lang-ja">å…«å¹¡è£½é‰„æ‰€</span><span class="lang-ko">ì•¼í•˜íƒ€ ì œì² ì†Œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Female Textile Workers</span><span class="lang-ja">å¥³æ€§ç´¡ç¸¾åŠ´åƒè€…</span><span class="lang-ko">ì—¬ì„± ë°©ì§ ë…¸ë™ìž</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-5">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-5">2</div>
-              <div class="part-info"><h3><span class="lang-en">Postwar Japan: Bureaucratic Capitalism</span><span class="lang-ja">戦後日本：官僚資本主義</span><span class="lang-ko">전후 일본: 관료 자본주의</span></h3><span>EP.06-11</span></div>
+              <div class="part-info"><h3><span class="lang-en">Postwar Japan: Bureaucratic Capitalism</span><span class="lang-ja">æˆ¦å¾Œæ—¥æœ¬ï¼šå®˜åƒšè³‡æœ¬ä¸»ç¾©</span><span class="lang-ko">ì „í›„ ì¼ë³¸: ê´€ë£Œ ìžë³¸ì£¼ì˜</span></h3><span>EP.06-11</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">Economic Stabilization Board</span><span class="lang-ja">経済安定本部</span><span class="lang-ko">경제안정본부</span></span></div>
-              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Dodge Line 1949</span><span class="lang-ja">ドッジ・ライン</span><span class="lang-ko">도지 라인</span></span></div>
-              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">MITI Legend: Myth vs Reality</span><span class="lang-ja">通産省の伝説</span><span class="lang-ko">통산성의 전설</span></span></div>
-              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">Operation Sasanami</span><span class="lang-ja">ささなみ作戦</span><span class="lang-ko">사사나미 작전</span></span></div>
-              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">VLSI Project</span><span class="lang-ja">VLSIプロジェクト</span><span class="lang-ko">VLSI 프로젝트</span></span></div>
-              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">Administrative Guidance</span><span class="lang-ja">行政指導</span><span class="lang-ko">행정지도</span></span></div>
+              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">Economic Stabilization Board</span><span class="lang-ja">çµŒæ¸ˆå®‰å®šæœ¬éƒ¨</span><span class="lang-ko">ê²½ì œì•ˆì •ë³¸ë¶€</span></span></div>
+              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Dodge Line 1949</span><span class="lang-ja">ãƒ‰ãƒƒã‚¸ãƒ»ãƒ©ã‚¤ãƒ³</span><span class="lang-ko">ë„ì§€ ë¼ì¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">MITI Legend: Myth vs Reality</span><span class="lang-ja">é€šç”£çœã®ä¼èª¬</span><span class="lang-ko">í†µì‚°ì„±ì˜ ì „ì„¤</span></span></div>
+              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">Operation Sasanami</span><span class="lang-ja">ã•ã•ãªã¿ä½œæˆ¦</span><span class="lang-ko">ì‚¬ì‚¬ë‚˜ë¯¸ ìž‘ì „</span></span></div>
+              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">VLSI Project</span><span class="lang-ja">VLSIãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ</span><span class="lang-ko">VLSI í”„ë¡œì íŠ¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">Administrative Guidance</span><span class="lang-ja">è¡Œæ”¿æŒ‡å°Ž</span><span class="lang-ko">í–‰ì •ì§€ë„</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-5">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-5">3</div>
-              <div class="part-info"><h3><span class="lang-en">Korea: Compressed Growth</span><span class="lang-ja">韓国：圧縮成長</span><span class="lang-ko">한국: 압축 성장</span></h3><span>EP.12-18</span></div>
+              <div class="part-info"><h3><span class="lang-en">Korea: Compressed Growth</span><span class="lang-ja">éŸ“å›½ï¼šåœ§ç¸®æˆé•·</span><span class="lang-ko">í•œêµ­: ì••ì¶• ì„±ìž¥</span></h3><span>EP.12-18</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Economic Planning Board</span><span class="lang-ja">経済企画院</span><span class="lang-ko">경제기획원</span></span></div>
-              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Korea-Japan Claims Fund</span><span class="lang-ja">韓日請求権資金</span><span class="lang-ko">한일 청구권 자금</span></span></div>
-              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">Export Drive</span><span class="lang-ja">輸出ドライブ</span><span class="lang-ko">수출 드라이브</span></span></div>
-              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">8.3 Debt Freeze 1972</span><span class="lang-ja">8.3私債凍結</span><span class="lang-ko">8.3 사채 동결</span></span></div>
-              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Heavy-Chemical Industry Declaration</span><span class="lang-ja">重化学工業宣言</span><span class="lang-ko">중화학공업 선언</span></span></div>
-              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Industrial Rationalization 1980</span><span class="lang-ja">産業合理化</span><span class="lang-ko">산업합리화</span></span></div>
-              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Semiconductor Bet: Samsung vs Daewoo</span><span class="lang-ja">半導体勝負</span><span class="lang-ko">반도체 승부</span></span></div>
+              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Economic Planning Board</span><span class="lang-ja">çµŒæ¸ˆä¼ç”»é™¢</span><span class="lang-ko">ê²½ì œê¸°íšì›</span></span></div>
+              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Korea-Japan Claims Fund</span><span class="lang-ja">éŸ“æ—¥è«‹æ±‚æ¨©è³‡é‡‘</span><span class="lang-ko">í•œì¼ ì²­êµ¬ê¶Œ ìžê¸ˆ</span></span></div>
+              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">Export Drive</span><span class="lang-ja">è¼¸å‡ºãƒ‰ãƒ©ã‚¤ãƒ–</span><span class="lang-ko">ìˆ˜ì¶œ ë“œë¼ì´ë¸Œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">8.3 Debt Freeze 1972</span><span class="lang-ja">8.3ç§å‚µå‡çµ</span><span class="lang-ko">8.3 ì‚¬ì±„ ë™ê²°</span></span></div>
+              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Heavy-Chemical Industry Declaration</span><span class="lang-ja">é‡åŒ–å­¦å·¥æ¥­å®£è¨€</span><span class="lang-ko">ì¤‘í™”í•™ê³µì—… ì„ ì–¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Industrial Rationalization 1980</span><span class="lang-ja">ç”£æ¥­åˆç†åŒ–</span><span class="lang-ko">ì‚°ì—…í•©ë¦¬í™”</span></span></div>
+              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Semiconductor Bet: Samsung vs Daewoo</span><span class="lang-ja">åŠå°Žä½“å‹è² </span><span class="lang-ko">ë°˜ë„ì²´ ìŠ¹ë¶€</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-5">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-5">4</div>
-              <div class="part-info"><h3><span class="lang-en">Taiwan & Singapore</span><span class="lang-ja">台湾とシンガポール</span><span class="lang-ko">대만과 싱가포르</span></h3><span>EP.19-23</span></div>
+              <div class="part-info"><h3><span class="lang-en">Taiwan & Singapore</span><span class="lang-ja">å°æ¹¾ã¨ã‚·ãƒ³ã‚¬ãƒãƒ¼ãƒ«</span><span class="lang-ko">ëŒ€ë§Œê³¼ ì‹±ê°€í¬ë¥´</span></h3><span>EP.19-23</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Taiwan Land Reform</span><span class="lang-ja">台湾土地改革</span><span class="lang-ko">대만 토지개혁</span></span></div>
-              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Export Processing Zone 1966</span><span class="lang-ja">輸出加工区</span><span class="lang-ko">수출가공구</span></span></div>
+              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">Taiwan Land Reform</span><span class="lang-ja">å°æ¹¾åœŸåœ°æ”¹é©</span><span class="lang-ko">ëŒ€ë§Œ í† ì§€ê°œí˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Export Processing Zone 1966</span><span class="lang-ja">è¼¸å‡ºåŠ å·¥åŒº</span><span class="lang-ko">ìˆ˜ì¶œê°€ê³µêµ¬</span></span></div>
               <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">TSMC: Why Morris Chang Returned</span><span class="lang-ja">TSMC</span><span class="lang-ko">TSMC</span></span></div>
-              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Lee Kuan Yew's Survival Strategy</span><span class="lang-ja">リー・クアンユー</span><span class="lang-ko">리콴유</span></span></div>
-              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Singapore CPF</span><span class="lang-ja">シンガポールCPF</span><span class="lang-ko">싱가포르 CPF</span></span></div>
+              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Lee Kuan Yew's Survival Strategy</span><span class="lang-ja">ãƒªãƒ¼ãƒ»ã‚¯ã‚¢ãƒ³ãƒ¦ãƒ¼</span><span class="lang-ko">ë¦¬ì½´ìœ </span></span></div>
+              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Singapore CPF</span><span class="lang-ja">ã‚·ãƒ³ã‚¬ãƒãƒ¼ãƒ«CPF</span><span class="lang-ko">ì‹±ê°€í¬ë¥´ CPF</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-5">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-5">5</div>
-              <div class="part-info"><h3><span class="lang-en">China: Scale Transformation</span><span class="lang-ja">中国：規模の変革</span><span class="lang-ko">중국: 규모의 변혁</span></h3><span>EP.24-27</span></div>
+              <div class="part-info"><h3><span class="lang-en">China: Scale Transformation</span><span class="lang-ja">ä¸­å›½ï¼šè¦æ¨¡ã®å¤‰é©</span><span class="lang-ko">ì¤‘êµ­: ê·œëª¨ì˜ ë³€í˜</span></h3><span>EP.24-27</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Deng's Southern Tour</span><span class="lang-ja">鄧小平の南巡講話</span><span class="lang-ko">덩샤오핑의 남순강화</span></span></div>
-              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">Township-Village Enterprises</span><span class="lang-ja">郷鎮企業</span><span class="lang-ko">향진기업</span></span></div>
-              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Zhu Rongji's WTO Concessions</span><span class="lang-ja">朱鎔基のWTO譲歩</span><span class="lang-ko">주룽지의 WTO 양보</span></span></div>
-              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Made in China 2025</span><span class="lang-ja">中国製造2025</span><span class="lang-ko">중국제조 2025</span></span></div>
+              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">Deng's Southern Tour</span><span class="lang-ja">é„§å°å¹³ã®å—å·¡è¬›è©±</span><span class="lang-ko">ë©ìƒ¤ì˜¤í•‘ì˜ ë‚¨ìˆœê°•í™”</span></span></div>
+              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">Township-Village Enterprises</span><span class="lang-ja">éƒ·éŽ®ä¼æ¥­</span><span class="lang-ko">í–¥ì§„ê¸°ì—…</span></span></div>
+              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Zhu Rongji's WTO Concessions</span><span class="lang-ja">æœ±éŽ”åŸºã®WTOè­²æ­©</span><span class="lang-ko">ì£¼ë£½ì§€ì˜ WTO ì–‘ë³´</span></span></div>
+              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Made in China 2025</span><span class="lang-ja">ä¸­å›½è£½é€ 2025</span><span class="lang-ko">ì¤‘êµ­ì œì¡° 2025</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-5">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-5">6</div>
-              <div class="part-info"><h3><span class="lang-en">Imitation and Failure</span><span class="lang-ja">模倣と失敗</span><span class="lang-ko">모방과 실패</span></h3><span>EP.28-30</span></div>
+              <div class="part-info"><h3><span class="lang-en">Imitation and Failure</span><span class="lang-ja">æ¨¡å€£ã¨å¤±æ•—</span><span class="lang-ko">ëª¨ë°©ê³¼ ì‹¤íŒ¨</span></h3><span>EP.28-30</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">Malaysia Proton</span><span class="lang-ja">マレーシア・プロトン</span><span class="lang-ko">말레이시아 프로톤</span></span></div>
-              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">Brazil Informatics Policy</span><span class="lang-ja">ブラジル情報産業政策</span><span class="lang-ko">브라질 정보산업 정책</span></span></div>
-              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">Why the Developmental State Can't Be Copied</span><span class="lang-ja">発展国家はなぜ複製できないか</span><span class="lang-ko">발전국가는 왜 복제할 수 없는가</span></span></div>
+              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">Malaysia Proton</span><span class="lang-ja">ãƒžãƒ¬ãƒ¼ã‚·ã‚¢ãƒ»ãƒ—ãƒ­ãƒˆãƒ³</span><span class="lang-ko">ë§ë ˆì´ì‹œì•„ í”„ë¡œí†¤</span></span></div>
+              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">Brazil Informatics Policy</span><span class="lang-ja">ãƒ–ãƒ©ã‚¸ãƒ«æƒ…å ±ç”£æ¥­æ”¿ç­–</span><span class="lang-ko">ë¸Œë¼ì§ˆ ì •ë³´ì‚°ì—… ì •ì±…</span></span></div>
+              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">Why the Developmental State Can't Be Copied</span><span class="lang-ja">ç™ºå±•å›½å®¶ã¯ãªãœè¤‡è£½ã§ããªã„ã‹</span><span class="lang-ko">ë°œì „êµ­ê°€ëŠ” ì™œ ë³µì œí•  ìˆ˜ ì—†ëŠ”ê°€</span></span></div>
             </div></div>
           </div>
         </div>
@@ -707,93 +711,93 @@
       <!-- SERIES 6 -->
       <div class="series-detail" id="series-6">
         <div class="page-header">
-          <h2 class="page-title"><span class="lang-en">American Political Economy</span><span class="lang-ja">アメリカ政治経済</span><span class="lang-ko">미국 정치경제</span></h2>
-          <p class="page-question"><span class="lang-en">How does America actually work?</span><span class="lang-ja">アメリカは実際どう動いているのか？</span><span class="lang-ko">미국은 실제로 어떻게 작동하는가?</span></p>
-          <p class="page-desc">30 Episodes · 1789-present</p>
+          <h2 class="page-title"><span class="lang-en">American Political Economy</span><span class="lang-ja">ã‚¢ãƒ¡ãƒªã‚«æ”¿æ²»çµŒæ¸ˆ</span><span class="lang-ko">ë¯¸êµ­ ì •ì¹˜ê²½ì œ</span></h2>
+          <p class="page-question"><span class="lang-en">How does America actually work?</span><span class="lang-ja">ã‚¢ãƒ¡ãƒªã‚«ã¯å®Ÿéš›ã©ã†å‹•ã„ã¦ã„ã‚‹ã®ã‹ï¼Ÿ</span><span class="lang-ko">ë¯¸êµ­ì€ ì‹¤ì œë¡œ ì–´ë–»ê²Œ ìž‘ë™í•˜ëŠ”ê°€?</span></p>
+          <p class="page-desc">30 Episodes Â· 1789-present</p>
         </div>
         <div class="parts-list">
           <div class="part-card part-card-6">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-6">1</div>
-              <div class="part-info"><h3><span class="lang-en">Founding Debates</span><span class="lang-ja">建国期の論争</span><span class="lang-ko">건국기의 논쟁</span></h3><span>EP.01-05</span></div>
+              <div class="part-info"><h3><span class="lang-en">Founding Debates</span><span class="lang-ja">å»ºå›½æœŸã®è«–äº‰</span><span class="lang-ko">ê±´êµ­ê¸°ì˜ ë…¼ìŸ</span></h3><span>EP.01-05</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">Hamilton vs Jefferson</span><span class="lang-ja">ハミルトン vs ジェファーソン</span><span class="lang-ko">해밀턴 vs 제퍼슨</span></span></div>
-              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">First Bank of the United States</span><span class="lang-ja">第一合衆国銀行</span><span class="lang-ko">제1 미국 은행</span></span></div>
-              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">Tariff of Abominations</span><span class="lang-ja">忌まわしき関税</span><span class="lang-ko">가증스러운 관세</span></span></div>
-              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">Jackson's Bank War</span><span class="lang-ja">ジャクソンの銀行戦争</span><span class="lang-ko">잭슨의 은행 전쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Civil War Economics</span><span class="lang-ja">南北戦争経済学</span><span class="lang-ko">남북전쟁 경제학</span></span></div>
+              <div class="episode-item"><span class="ep-num">01</span><span class="ep-title"><span class="lang-en">Hamilton vs Jefferson</span><span class="lang-ja">ãƒãƒŸãƒ«ãƒˆãƒ³ vs ã‚¸ã‚§ãƒ•ã‚¡ãƒ¼ã‚½ãƒ³</span><span class="lang-ko">í•´ë°€í„´ vs ì œí¼ìŠ¨</span></span></div>
+              <div class="episode-item"><span class="ep-num">02</span><span class="ep-title"><span class="lang-en">First Bank of the United States</span><span class="lang-ja">ç¬¬ä¸€åˆè¡†å›½éŠ€è¡Œ</span><span class="lang-ko">ì œ1 ë¯¸êµ­ ì€í–‰</span></span></div>
+              <div class="episode-item"><span class="ep-num">03</span><span class="ep-title"><span class="lang-en">Tariff of Abominations</span><span class="lang-ja">å¿Œã¾ã‚ã—ãé–¢ç¨Ž</span><span class="lang-ko">ê°€ì¦ìŠ¤ëŸ¬ìš´ ê´€ì„¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">04</span><span class="ep-title"><span class="lang-en">Jackson's Bank War</span><span class="lang-ja">ã‚¸ãƒ£ã‚¯ã‚½ãƒ³ã®éŠ€è¡Œæˆ¦äº‰</span><span class="lang-ko">ìž­ìŠ¨ì˜ ì€í–‰ ì „ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">05</span><span class="ep-title"><span class="lang-en">Civil War Economics</span><span class="lang-ja">å—åŒ—æˆ¦äº‰çµŒæ¸ˆå­¦</span><span class="lang-ko">ë‚¨ë¶ì „ìŸ ê²½ì œí•™</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-6">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-6">2</div>
-              <div class="part-info"><h3><span class="lang-en">Gilded Age to New Deal</span><span class="lang-ja">金ぴか時代からニューディールへ</span><span class="lang-ko">금박시대에서 뉴딜까지</span></h3><span>EP.06-10</span></div>
+              <div class="part-info"><h3><span class="lang-en">Gilded Age to New Deal</span><span class="lang-ja">é‡‘ã´ã‹æ™‚ä»£ã‹ã‚‰ãƒ‹ãƒ¥ãƒ¼ãƒ‡ã‚£ãƒ¼ãƒ«ã¸</span><span class="lang-ko">ê¸ˆë°•ì‹œëŒ€ì—ì„œ ë‰´ë”œê¹Œì§€</span></h3><span>EP.06-10</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">Robber Barons and Trusts</span><span class="lang-ja">強盗男爵とトラスト</span><span class="lang-ko">강도 남작과 트러스트</span></span></div>
-              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Progressive Era Reforms</span><span class="lang-ja">革新主義時代の改革</span><span class="lang-ko">진보주의 시대 개혁</span></span></div>
-              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">Federal Reserve Creation</span><span class="lang-ja">連邦準備制度創設</span><span class="lang-ko">연방준비제도 창설</span></span></div>
-              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">New Deal Revolution</span><span class="lang-ja">ニューディール革命</span><span class="lang-ko">뉴딜 혁명</span></span></div>
-              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">Social Security's Birth</span><span class="lang-ja">社会保障の誕生</span><span class="lang-ko">사회보장의 탄생</span></span></div>
+              <div class="episode-item"><span class="ep-num">06</span><span class="ep-title"><span class="lang-en">Robber Barons and Trusts</span><span class="lang-ja">å¼·ç›—ç”·çˆµã¨ãƒˆãƒ©ã‚¹ãƒˆ</span><span class="lang-ko">ê°•ë„ ë‚¨ìž‘ê³¼ íŠ¸ëŸ¬ìŠ¤íŠ¸</span></span></div>
+              <div class="episode-item"><span class="ep-num">07</span><span class="ep-title"><span class="lang-en">Progressive Era Reforms</span><span class="lang-ja">é©æ–°ä¸»ç¾©æ™‚ä»£ã®æ”¹é©</span><span class="lang-ko">ì§„ë³´ì£¼ì˜ ì‹œëŒ€ ê°œí˜</span></span></div>
+              <div class="episode-item"><span class="ep-num">08</span><span class="ep-title"><span class="lang-en">Federal Reserve Creation</span><span class="lang-ja">é€£é‚¦æº–å‚™åˆ¶åº¦å‰µè¨­</span><span class="lang-ko">ì—°ë°©ì¤€ë¹„ì œë„ ì°½ì„¤</span></span></div>
+              <div class="episode-item"><span class="ep-num">09</span><span class="ep-title"><span class="lang-en">New Deal Revolution</span><span class="lang-ja">ãƒ‹ãƒ¥ãƒ¼ãƒ‡ã‚£ãƒ¼ãƒ«é©å‘½</span><span class="lang-ko">ë‰´ë”œ í˜ëª…</span></span></div>
+              <div class="episode-item"><span class="ep-num">10</span><span class="ep-title"><span class="lang-en">Social Security's Birth</span><span class="lang-ja">ç¤¾ä¼šä¿éšœã®èª•ç”Ÿ</span><span class="lang-ko">ì‚¬íšŒë³´ìž¥ì˜ íƒ„ìƒ</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-6">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-6">3</div>
-              <div class="part-info"><h3><span class="lang-en">Postwar Consensus</span><span class="lang-ja">戦後コンセンサス</span><span class="lang-ko">전후 합의</span></h3><span>EP.11-15</span></div>
+              <div class="part-info"><h3><span class="lang-en">Postwar Consensus</span><span class="lang-ja">æˆ¦å¾Œã‚³ãƒ³ã‚»ãƒ³ã‚µã‚¹</span><span class="lang-ko">ì „í›„ í•©ì˜</span></h3><span>EP.11-15</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">GI Bill and Suburbanization</span><span class="lang-ja">GI法と郊外化</span><span class="lang-ko">GI 법과 교외화</span></span></div>
-              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Military-Industrial Complex</span><span class="lang-ja">軍産複合体</span><span class="lang-ko">군산복합체</span></span></div>
-              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Great Society Programs</span><span class="lang-ja">偉大な社会プログラム</span><span class="lang-ko">위대한 사회 프로그램</span></span></div>
-              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">Stagflation Crisis</span><span class="lang-ja">スタグフレーション危機</span><span class="lang-ko">스태그플레이션 위기</span></span></div>
-              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Volcker's Revolution</span><span class="lang-ja">ボルカー革命</span><span class="lang-ko">볼커의 혁명</span></span></div>
+              <div class="episode-item"><span class="ep-num">11</span><span class="ep-title"><span class="lang-en">GI Bill and Suburbanization</span><span class="lang-ja">GIæ³•ã¨éƒŠå¤–åŒ–</span><span class="lang-ko">GI ë²•ê³¼ êµì™¸í™”</span></span></div>
+              <div class="episode-item"><span class="ep-num">12</span><span class="ep-title"><span class="lang-en">Military-Industrial Complex</span><span class="lang-ja">è»ç”£è¤‡åˆä½“</span><span class="lang-ko">êµ°ì‚°ë³µí•©ì²´</span></span></div>
+              <div class="episode-item"><span class="ep-num">13</span><span class="ep-title"><span class="lang-en">Great Society Programs</span><span class="lang-ja">å‰å¤§ãªç¤¾ä¼šãƒ—ãƒ­ã‚°ãƒ©ãƒ </span><span class="lang-ko">ìœ„ëŒ€í•œ ì‚¬íšŒ í”„ë¡œê·¸ëž¨</span></span></div>
+              <div class="episode-item"><span class="ep-num">14</span><span class="ep-title"><span class="lang-en">Stagflation Crisis</span><span class="lang-ja">ã‚¹ã‚¿ã‚°ãƒ•ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å±æ©Ÿ</span><span class="lang-ko">ìŠ¤íƒœê·¸í”Œë ˆì´ì…˜ ìœ„ê¸°</span></span></div>
+              <div class="episode-item"><span class="ep-num">15</span><span class="ep-title"><span class="lang-en">Volcker's Revolution</span><span class="lang-ja">ãƒœãƒ«ã‚«ãƒ¼é©å‘½</span><span class="lang-ko">ë³¼ì»¤ì˜ í˜ëª…</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-6">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-6">4</div>
-              <div class="part-info"><h3><span class="lang-en">Neoliberal Turn</span><span class="lang-ja">新自由主義への転換</span><span class="lang-ko">신자유주의로의 전환</span></h3><span>EP.16-20</span></div>
+              <div class="part-info"><h3><span class="lang-en">Neoliberal Turn</span><span class="lang-ja">æ–°è‡ªç”±ä¸»ç¾©ã¸ã®è»¢æ›</span><span class="lang-ko">ì‹ ìžìœ ì£¼ì˜ë¡œì˜ ì „í™˜</span></h3><span>EP.16-20</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Reagan Revolution</span><span class="lang-ja">レーガン革命</span><span class="lang-ko">레이건 혁명</span></span></div>
-              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Deregulation Wave</span><span class="lang-ja">規制緩和の波</span><span class="lang-ko">규제 완화의 물결</span></span></div>
-              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Clinton and Globalization</span><span class="lang-ja">クリントンとグローバル化</span><span class="lang-ko">클린턴과 세계화</span></span></div>
-              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">NAFTA Debate</span><span class="lang-ja">NAFTA論争</span><span class="lang-ko">NAFTA 논쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Wall Street Ascendant</span><span class="lang-ja">ウォール街の台頭</span><span class="lang-ko">월스트리트의 부상</span></span></div>
+              <div class="episode-item"><span class="ep-num">16</span><span class="ep-title"><span class="lang-en">Reagan Revolution</span><span class="lang-ja">ãƒ¬ãƒ¼ã‚¬ãƒ³é©å‘½</span><span class="lang-ko">ë ˆì´ê±´ í˜ëª…</span></span></div>
+              <div class="episode-item"><span class="ep-num">17</span><span class="ep-title"><span class="lang-en">Deregulation Wave</span><span class="lang-ja">è¦åˆ¶ç·©å’Œã®æ³¢</span><span class="lang-ko">ê·œì œ ì™„í™”ì˜ ë¬¼ê²°</span></span></div>
+              <div class="episode-item"><span class="ep-num">18</span><span class="ep-title"><span class="lang-en">Clinton and Globalization</span><span class="lang-ja">ã‚¯ãƒªãƒ³ãƒˆãƒ³ã¨ã‚°ãƒ­ãƒ¼ãƒãƒ«åŒ–</span><span class="lang-ko">í´ë¦°í„´ê³¼ ì„¸ê³„í™”</span></span></div>
+              <div class="episode-item"><span class="ep-num">19</span><span class="ep-title"><span class="lang-en">NAFTA Debate</span><span class="lang-ja">NAFTAè«–äº‰</span><span class="lang-ko">NAFTA ë…¼ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">20</span><span class="ep-title"><span class="lang-en">Wall Street Ascendant</span><span class="lang-ja">ã‚¦ã‚©ãƒ¼ãƒ«è¡—ã®å°é ­</span><span class="lang-ko">ì›”ìŠ¤íŠ¸ë¦¬íŠ¸ì˜ ë¶€ìƒ</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-6">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-6">5</div>
-              <div class="part-info"><h3><span class="lang-en">21st Century Challenges</span><span class="lang-ja">21世紀の課題</span><span class="lang-ko">21세기 과제</span></h3><span>EP.21-25</span></div>
+              <div class="part-info"><h3><span class="lang-en">21st Century Challenges</span><span class="lang-ja">21ä¸–ç´€ã®èª²é¡Œ</span><span class="lang-ko">21ì„¸ê¸° ê³¼ì œ</span></h3><span>EP.21-25</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">2008 Crisis Response</span><span class="lang-ja">2008年危機対応</span><span class="lang-ko">2008년 위기 대응</span></span></div>
-              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Obamacare Battle</span><span class="lang-ja">オバマケア戦争</span><span class="lang-ko">오바마케어 전쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Trump's Trade War</span><span class="lang-ja">トランプの貿易戦争</span><span class="lang-ko">트럼프의 무역전쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">COVID Economic Response</span><span class="lang-ja">COVID経済対応</span><span class="lang-ko">코로나 경제 대응</span></span></div>
-              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">IRA and Industrial Policy Return</span><span class="lang-ja">IRAと産業政策</span><span class="lang-ko">IRA와 산업정책</span></span></div>
+              <div class="episode-item"><span class="ep-num">21</span><span class="ep-title"><span class="lang-en">2008 Crisis Response</span><span class="lang-ja">2008å¹´å±æ©Ÿå¯¾å¿œ</span><span class="lang-ko">2008ë…„ ìœ„ê¸° ëŒ€ì‘</span></span></div>
+              <div class="episode-item"><span class="ep-num">22</span><span class="ep-title"><span class="lang-en">Obamacare Battle</span><span class="lang-ja">ã‚ªãƒãƒžã‚±ã‚¢æˆ¦äº‰</span><span class="lang-ko">ì˜¤ë°”ë§ˆì¼€ì–´ ì „ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">23</span><span class="ep-title"><span class="lang-en">Trump's Trade War</span><span class="lang-ja">ãƒˆãƒ©ãƒ³ãƒ—ã®è²¿æ˜“æˆ¦äº‰</span><span class="lang-ko">íŠ¸ëŸ¼í”„ì˜ ë¬´ì—­ì „ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">24</span><span class="ep-title"><span class="lang-en">COVID Economic Response</span><span class="lang-ja">COVIDçµŒæ¸ˆå¯¾å¿œ</span><span class="lang-ko">ì½”ë¡œë‚˜ ê²½ì œ ëŒ€ì‘</span></span></div>
+              <div class="episode-item"><span class="ep-num">25</span><span class="ep-title"><span class="lang-en">IRA and Industrial Policy Return</span><span class="lang-ja">IRAã¨ç”£æ¥­æ”¿ç­–</span><span class="lang-ko">IRAì™€ ì‚°ì—…ì •ì±…</span></span></div>
             </div></div>
           </div>
           <div class="part-card part-card-6">
             <div class="part-header" onclick="togglePart(this)">
               <div class="part-num part-num-6">6</div>
-              <div class="part-info"><h3><span class="lang-en">Current Debates</span><span class="lang-ja">現在の論争</span><span class="lang-ko">현재의 논쟁</span></h3><span>EP.26-30</span></div>
+              <div class="part-info"><h3><span class="lang-en">Current Debates</span><span class="lang-ja">ç¾åœ¨ã®è«–äº‰</span><span class="lang-ko">í˜„ìž¬ì˜ ë…¼ìŸ</span></h3><span>EP.26-30</span></div>
               <svg class="part-toggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
             <div class="episodes-container"><div class="episodes-grid">
-              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Fed Independence Under Attack</span><span class="lang-ja">FRB独立性論争</span><span class="lang-ko">연준 독립성 논쟁</span></span></div>
-              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Fiscal Sustainability: Debt Ceiling</span><span class="lang-ja">財政持続可能性</span><span class="lang-ko">재정 지속 가능성</span></span></div>
-              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">Tech Antitrust Revival</span><span class="lang-ja">テック独禁法復活</span><span class="lang-ko">테크 반독점 부활</span></span></div>
-              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">China Competition Policy</span><span class="lang-ja">対中競争政策</span><span class="lang-ko">대중국 경쟁 정책</span></span></div>
-              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">What Comes Next?</span><span class="lang-ja">次に来るものは</span><span class="lang-ko">다음은 무엇인가</span></span></div>
+              <div class="episode-item"><span class="ep-num">26</span><span class="ep-title"><span class="lang-en">Fed Independence Under Attack</span><span class="lang-ja">FRBç‹¬ç«‹æ€§è«–äº‰</span><span class="lang-ko">ì—°ì¤€ ë…ë¦½ì„± ë…¼ìŸ</span></span></div>
+              <div class="episode-item"><span class="ep-num">27</span><span class="ep-title"><span class="lang-en">Fiscal Sustainability: Debt Ceiling</span><span class="lang-ja">è²¡æ”¿æŒç¶šå¯èƒ½æ€§</span><span class="lang-ko">ìž¬ì • ì§€ì† ê°€ëŠ¥ì„±</span></span></div>
+              <div class="episode-item"><span class="ep-num">28</span><span class="ep-title"><span class="lang-en">Tech Antitrust Revival</span><span class="lang-ja">ãƒ†ãƒƒã‚¯ç‹¬ç¦æ³•å¾©æ´»</span><span class="lang-ko">í…Œí¬ ë°˜ë…ì  ë¶€í™œ</span></span></div>
+              <div class="episode-item"><span class="ep-num">29</span><span class="ep-title"><span class="lang-en">China Competition Policy</span><span class="lang-ja">å¯¾ä¸­ç«¶äº‰æ”¿ç­–</span><span class="lang-ko">ëŒ€ì¤‘êµ­ ê²½ìŸ ì •ì±…</span></span></div>
+              <div class="episode-item"><span class="ep-num">30</span><span class="ep-title"><span class="lang-en">What Comes Next?</span><span class="lang-ja">æ¬¡ã«æ¥ã‚‹ã‚‚ã®ã¯</span><span class="lang-ko">ë‹¤ìŒì€ ë¬´ì—‡ì¸ê°€</span></span></div>
             </div></div>
           </div>
         </div>
@@ -803,7 +807,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p class="footer-text">© 2025 Nexus 3.0 Global. All rights reserved.</p>
+    <p class="footer-text">Â© 2025 Nexus 3.0 Global. All rights reserved.</p>
   </footer>
 
   <script>
@@ -842,6 +846,35 @@
       container.classList.toggle('open');
       toggle.classList.toggle('open');
     }
+
+    // Load episode links from JSON
+    async function loadEpisodeLinks() {
+      try {
+        const response = await fetch('episodes.json');
+        const data = await response.json();
+        
+        document.querySelectorAll('.episode-item').forEach(item => {
+          const epNum = item.querySelector('.ep-num').textContent.trim();
+          const seriesDetail = item.closest('.series-detail');
+          if (!seriesDetail) return;
+          
+          const seriesNum = seriesDetail.id.replace('series-', '');
+          const key = `s${seriesNum}-ep${epNum}`;
+          
+          if (data.episodes[key] && data.episodes[key].url) {
+            item.classList.add('has-link');
+            item.addEventListener('click', () => {
+              window.location.href = data.episodes[key].url;
+            });
+          }
+        });
+      } catch (e) {
+        console.log('No episodes.json found or error loading:', e);
+      }
+    }
+    
+    // Load on page ready
+    document.addEventListener('DOMContentLoaded', loadEpisodeLinks);
   </script>
 </body>
 </html>
