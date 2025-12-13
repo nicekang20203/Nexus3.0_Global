@@ -122,12 +122,8 @@
     .episodes-grid { display: grid; gap: 0.5rem; padding: 0 1.25rem 1.25rem; }
     @media (min-width: 640px) { .episodes-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1024px) { .episodes-grid { grid-template-columns: repeat(3, 1fr); } }
-    .episode-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; padding-right: 2rem; background: rgba(30,41,59,0.5); border-radius: 0.5rem; border: 1px solid transparent; transition: all 0.2s; }
+    .episode-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem; background: rgba(30,41,59,0.5); border-radius: 0.5rem; border: 1px solid transparent; transition: all 0.2s; }
     .episode-item:hover { background: rgba(51,65,85,0.5); }
-    .episode-item.has-link { cursor: pointer; position: relative; }
-    .episode-item.has-link:hover { background: rgba(59,130,246,0.2); border-color: rgba(59,130,246,0.4); }
-    .episode-item.has-link::after { content: '📊'; position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); font-size: 0.875rem; opacity: 0.7; }
-    .episode-item.has-link:hover::after { opacity: 1; }
     .ep-num { font-size: 0.75rem; color: var(--slate-500); font-family: monospace; min-width: 1.5rem; }
     .ep-title { font-size: 0.875rem; color: var(--slate-300); line-height: 1.4; }
     
@@ -848,33 +844,6 @@
     }
 
     // Load episode links from JSON
-    async function loadEpisodeLinks() {
-      try {
-        const response = await fetch('episodes.json');
-        const data = await response.json();
-        
-        document.querySelectorAll('.episode-item').forEach(item => {
-          const epNum = item.querySelector('.ep-num').textContent.trim();
-          const seriesDetail = item.closest('.series-detail');
-          if (!seriesDetail) return;
-          
-          const seriesNum = seriesDetail.id.replace('series-', '');
-          const key = `s${seriesNum}-ep${epNum}`;
-          
-          if (data.episodes[key] && data.episodes[key].url) {
-            item.classList.add('has-link');
-            item.addEventListener('click', () => {
-              window.location.href = data.episodes[key].url;
-            });
-          }
-        });
-      } catch (e) {
-        console.log('No episodes.json found or error loading:', e);
-      }
-    }
-    
-    // Load on page ready
-    document.addEventListener('DOMContentLoaded', loadEpisodeLinks);
   </script>
 </body>
 </html>
