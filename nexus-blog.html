@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus 3.0: Decoding Power</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --navy-dark: #0d1b2a;
+      --navy-mid: #1b3a4b;
+      --navy-light: #274c5e;
+      --cream: #faf8f5;
+      --cream-dark: #f0ebe3;
+      --gold: #c9a227;
+      --gold-light: #d4b84a;
+      --charcoal: #2d2d2d;
+      --slate: #64748b;
+      --white: #ffffff;
+      
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --shadow-sm: 0 1px 3px rgba(13, 27, 42, 0.08);
+      --shadow-md: 0 4px 12px rgba(13, 27, 42, 0.12);
+      --shadow-lg: 0 8px 30px rgba(13, 27, 42, 0.16);
+      
+      --transition: all 0.3s ease;
+    }
+    
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--charcoal);
+      background: var(--cream);
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--navy-dark);
+    }
+    
+    a {
+      color: var(--navy-mid);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--gold);
+    }
+    
+    /* ===== HEADER ===== */
+    header {
+      background: var(--navy-dark);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+    }
+    
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.5px;
+    }
+    
+    .logo span {
+      color: var(--gold);
+    }
+    
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    
+    nav a {
+      color: var(--cream);
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      opacity: 0.85;
+    }
+    
+    nav a:hover, nav a.active {
+      opacity: 1;
+      color: var(--gold);
+    }
+    
+    .youtube-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ff0000;
+      color: white !important;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      opacity: 1 !important;
+    }
+    
+    .youtube-btn:hover {
+      background: #cc0000;
+      color: white !important;
+    }
+    
+    .youtube-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      gap: 0.25rem;
+      margin-left: 0.5rem;
+    }
+    
+    .lang-btn {
+      padding: 0.35rem 0.6rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: var(--cream);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: var(--transition);
+      opacity: 0.7;
+    }
+    
+    .lang-btn:hover {
+      opacity: 1;
+      border-color: var(--gold);
+    }
+    
+    .lang-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy-dark);
+      opacity: 1;
+    }
+    
+    /* Language visibility */
+    [data-lang="ko"] .lang-en,
+    [data-lang="ja"] .lang-en { display: none; }
+    [data-lang="en"] .lang-ko,
+    [data-lang="ja"] .lang-ko { display: none; }
+    [data-lang="en"] .lang-ja,
+    [data-lang="ko"] .lang-ja { display: none; }
+    
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+      padding: 140px 2rem 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+    
+    .hero h1 span {
+      color: var(--gold);
+    }
+    
+    .hero-tagline {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--cream);
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--cream);
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    
+    .hero-cta:hover {
+      background: var(--gold-light);
+      color: var(--navy-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* ===== MAIN CONTENT ===== */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    section {
+      margin-bottom: 4rem;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-header p {
+      color: var(--slate);
+      font-size: 1.1rem;
+    }
+    
+    /* ===== SERIES TABS ===== */
+    .series-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+      padding: 0.5rem;
+      background: var(--cream-dark);
+      border-radius: 8px;
+    }
+    
+    .series-tab {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--slate);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+    
+    .series-tab:hover {
+      color: var(--navy-dark);
+      background: var(--white);
+    }
+    
+    .series-tab.active {
+      background: var(--navy-dark);
+      color: var(--cream);
+    }
+    
+    /* ===== SERIES CONTENT ===== */
+    .series-content {
+      display: none;
+    }
+    
+    .series-content.active {
+      display: block;
+    }
+    
+    .series-header {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--gold);
+    }
+    
+    .series-header h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .series-question {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--navy-mid);
+      margin-bottom: 1rem;
+    }
+    
+    .series-meta {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--slate);
+    }
+    
+    .series-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .series-meta strong {
+      color: var(--charcoal);
+    }
+    
+    /* ===== EPISODE ACCORDION ===== */
+    .episodes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .episode-item {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    
+    .episode-item:hover {
+      box-shadow: var(--shadow-md);
+    }
+    
+    .episode-header {
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      gap: 1rem;
+      user-select: none;
+    }
+    
+    .episode-number {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--gold);
+      background: var(--cream-dark);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      min-width: 50px;
+      text-align: center;
+    }
+    
+    .episode-title {
+      flex: 1;
+      font-weight: 600;
+      color: var(--navy-dark);
+      font-size: 1.05rem;
+    }
+    
+    .episode-toggle {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate);
+      transition: var(--transition);
+    }
+    
+    .episode-toggle svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .episode-item.open .episode-toggle {
+      transform: rotate(180deg);
+    }
+    
+    .episode-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    
+    .episode-item.open .episode-content {
+      max-height: 800px;
+    }
+    
+    .episode-inner {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--cream-dark);
+    }
+    
+    .episode-section {
+      margin-top: 1.25rem;
+    }
+    
+    .episode-section h5 {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+    
+    .episode-section p {
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+    
+    .key-data {
+      background: var(--cream);
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+    
+    .key-data li {
+      margin-bottom: 0.5rem;
+      list-style: none;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    
+    .key-data li::before {
+      content: '•';
+      color: var(--gold);
+      font-weight: bold;
+    }
+    
+    .data-value {
+      color: var(--navy-dark);
+      font-weight: 500;
+    }
+    
+    .episode-cta {
+      margin-top: 1.5rem;
+    }
+    
+    .watch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--navy-dark);
+      color: var(--cream);
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    
+    .watch-btn:hover {
+      background: var(--navy-mid);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
+    
+    .watch-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .coming-soon {
+      display: inline-block;
+      background: var(--cream-dark);
+      color: var(--slate);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    /* ===== SERIES CARDS (Home Preview) ===== */
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .series-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .series-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+    
+    .series-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    
+    .series-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .series-card-number {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    
+    .series-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .series-card p {
+      color: var(--slate);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    
+    .series-card-meta {
+      font-size: 0.85rem;
+      color: var(--slate);
+    }
+    
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-dark);
+      color: var(--cream);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-logo span {
+      color: var(--gold);
+    }
+    
+    .footer-tagline {
+      font-style: italic;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-links a {
+      color: var(--cream);
+      opacity: 0.7;
+    }
+    
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--gold);
+    }
+    
+    .footer-copyright {
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      
+      .hero {
+        padding: 120px 1.5rem 60px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-tagline {
+        font-size: 1.1rem;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .series-tabs {
+        gap: 0.25rem;
+      }
+      
+      .series-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+      
+      .series-header {
+        padding: 1.5rem;
+      }
+      
+      .series-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .episode-header {
+        padding: 1rem;
+      }
+      
+      .episode-title {
+        font-size: 0.95rem;
+      }
+      
+      .series-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">Nexus <span>3.0</span></div>
+      <nav>
+        <a href="#home" class="active" onclick="showPage('home')">Home</a>
+        <a href="#series" onclick="showPage('series')">Series</a>
+        <a href="#about" onclick="showPage('about')">About</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('ko')">한국어</button>
+          <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+        </div>
+        <a href="https://www.youtube.com/channel/UCACRkyZNYi7I9HtgBtbLv4A" target="_blank" class="youtube-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME PAGE -->
+  <div id="page-home" class="page active">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Nexus <span>3.0</span></h1>
+        <p class="hero-tagline">
+          <span class="lang-en">"Follow the money. Find the power."</span>
+          <span class="lang-ko">"돈을 따라가라. 권력을 찾아라."</span>
+          <span class="lang-ja">"金を追え。権力を見つけろ。"</span>
+        </p>
+        <p class="hero-description">
+          <span class="lang-en">Decoding the geopolitics of money and power. Evidence-based analysis of the forces reshaping the global order.</span>
+          <span class="lang-ko">돈과 권력의 지정학을 해독한다. 세계 질서를 재편하는 힘에 대한 증거 기반 분석.</span>
+          <span class="lang-ja">金と権力の地政学を解読する。世界秩序を再編する力の証拠に基づく分析。</span>
+        </p>
+        <a href="https://www.youtube.com/channel/UCACRkyZNYi7I9HtgBtbLv4A" target="_blank" class="hero-cta">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <span class="lang-en">Watch on YouTube</span>
+          <span class="lang-ko">YouTube에서 보기</span>
+          <span class="lang-ja">YouTubeで見る</span>
+        </a>
+      </div>
+    </section>
+
+    <main>
+      <section>
+        <div class="section-header">
+          <h2>
+            <span class="lang-en">The Five Series</span>
+            <span class="lang-ko">5개 시리즈</span>
+            <span class="lang-ja">5つのシリーズ</span>
+          </h2>
+          <p>
+            <span class="lang-en">100 episodes exploring the great power transition</span>
+            <span class="lang-ko">대전환기의 세계 질서를 분석하는 100편의 에피소드</span>
+            <span class="lang-ja">大転換期の世界秩序を分析する100のエピソード</span>
+          </p>
+        </div>
+        
+        <div class="series-grid">
+          <div class="series-card" onclick="showPage('series'); showSeries(1);">
+            <div class="series-card-number">SERIES 1</div>
+            <h4>The Dollar's Last Stand</h4>
+            <p>Can US dollar hegemony survive its own contradictions?</p>
+            <div class="series-card-meta">22 Episodes • Urgent, Mathematical</div>
+          </div>
+          
+          <div class="series-card" onclick="showPage('series'); showSeries(2);">
+            <div class="series-card-number">SERIES 2</div>
+            <h4>The Dragon's Gambit</h4>
+            <p>Can China build an alternative to dollar hegemony?</p>
+            <div class="series-card-meta">20 Episodes • Analytical, Investigative</div>
+          </div>
+          
+          <div class="series-card" onclick="showPage('series'); showSeries(3);">
+            <div class="series-card-number">SERIES 3</div>
+            <h4>The Chip Wars</h4>
+            <p>Who will control the technologies that control everything?</p>
+            <div class="series-card-meta">20 Episodes • High-Tech, Thriller</div>
+          </div>
+          
+          <div class="series-card" onclick="showPage('series'); showSeries(4);">
+            <div class="series-card-number">SERIES 4</div>
+            <h4>Europe's Twilight</h4>
+            <p>Is Europe becoming a museum of past greatness?</p>
+            <div class="series-card-meta">18 Episodes • Melancholic, Critical</div>
+          </div>
+          
+          <div class="series-card" onclick="showPage('series'); showSeries(5);">
+            <div class="series-card-number">SERIES 5</div>
+            <h4>The Asian Century</h4>
+            <p>Will the 21st century belong to Asia?</p>
+            <div class="series-card-meta">20 Episodes • Optimistic, Dynamic</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- SERIES PAGE -->
+  <div id="page-series" class="page" style="display:none;">
+    <div style="padding-top: 90px;"></div>
+    <main>
+      <div class="section-header">
+        <h2>
+          <span class="lang-en">Episode Guide</span>
+          <span class="lang-ko">에피소드 가이드</span>
+          <span class="lang-ja">エピソードガイド</span>
+        </h2>
+        <p>
+          <span class="lang-en">Comprehensive analysis across five mega-series</span>
+          <span class="lang-ko">5개 메가 시리즈에 걸친 종합 분석</span>
+          <span class="lang-ja">5つのメガシリーズにわたる総合分析</span>
+        </p>
+      </div>
+      
+      <!-- Series Tabs -->
+      <div class="series-tabs">
+        <button class="series-tab active" onclick="showSeries(1)">1. Dollar</button>
+        <button class="series-tab" onclick="showSeries(2)">2. China</button>
+        <button class="series-tab" onclick="showSeries(3)">3. Chips</button>
+        <button class="series-tab" onclick="showSeries(4)">4. Europe</button>
+        <button class="series-tab" onclick="showSeries(5)">5. Asia</button>
+      </div>
+      
+      <!-- SERIES 1: The Dollar's Last Stand -->
+      <div id="series-1" class="series-content active">
+        <div class="series-header">
+          <h3>The Dollar's Last Stand</h3>
+          <p class="series-question">"Can US dollar hegemony survive its own contradictions?"</p>
+          <div class="series-meta">
+            <span><strong>Episodes:</strong> 1-22</span>
+            <span><strong>Tone:</strong> Urgent, Mathematical, Skeptical</span>
+            <span><strong>Themes:</strong> US Debt, Federal Reserve, De-dollarization</span>
+          </div>
+        </div>
+        
+        <div class="episodes-list">
+          <!-- EP 01 -->
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 01</span>
+              <span class="episode-title">The $36 Trillion Time Bomb: Can America Ever Pay It Back?</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Interest payments now exceed the defense budget. The math of the debt spiral.</p>
+                </div>
+                <div class="episode-section">
+                  <h5>Key Data</h5>
+                  <ul class="key-data">
+                    <li>US National Debt: <span class="data-value">$36.2 trillion</span> (Dec 2024)</li>
+                    <li>Annual Interest: <span class="data-value">$1.1 trillion</span></li>
+                    <li>Debt-to-GDP: <span class="data-value">123%</span></li>
+                    <li>Interest vs Defense: <span class="data-value">Interest now exceeds</span></li>
+                  </ul>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming January 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EP 02 -->
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 02</span>
+              <span class="episode-title">The Day the Treasury Auction Failed</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>What happens when no one wants to buy American debt?</p>
+                </div>
+                <div class="episode-section">
+                  <h5>Key Data</h5>
+                  <ul class="key-data">
+                    <li>Weekly Treasury Issuance: <span class="data-value">~$200 billion</span></li>
+                    <li>Primary Dealers: <span class="data-value">24 banks required to bid</span></li>
+                    <li>Bid-to-Cover Ratio: <span class="data-value">Healthy > 2.5x</span></li>
+                  </ul>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming January 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EP 03 -->
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 03</span>
+              <span class="episode-title">Who Actually Owns America's Debt?</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Foreign holders, the Fed, domestic institutions — mapping the creditors.</p>
+                </div>
+                <div class="episode-section">
+                  <h5>Key Data</h5>
+                  <ul class="key-data">
+                    <li>Foreign Holdings: <span class="data-value">$7.9T (22%)</span></li>
+                    <li>Federal Reserve: <span class="data-value">$4.8T (13%)</span></li>
+                    <li>Domestic Investors: <span class="data-value">$23.5T (65%)</span></li>
+                    <li>Top Foreign: <span class="data-value">Japan $1.1T, China $770B</span></li>
+                  </ul>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming January 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EP 04 -->
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 04</span>
+              <span class="episode-title">The Interest Payment Trap: When Debt Pays for Debt</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Debt servicing costs now exceed $1 trillion. The doom loop begins.</p>
+                </div>
+                <div class="episode-section">
+                  <h5>Key Data</h5>
+                  <ul class="key-data">
+                    <li>Net Interest FY2024: <span class="data-value">$882 billion</span></li>
+                    <li>Projected FY2025: <span class="data-value">$1.1+ trillion</span></li>
+                    <li>% of Revenue: <span class="data-value">~18%</span></li>
+                    <li>Average Rate: <span class="data-value">Rising from 2% to 3.5%</span></li>
+                  </ul>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming January 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EP 05 -->
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 05</span>
+              <span class="episode-title">"Deficits Don't Matter": The Dangerous Idea</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>MMT debate and its real-world consequences.</p>
+                </div>
+                <div class="episode-section">
+                  <h5>Key Data</h5>
+                  <ul class="key-data">
+                    <li>MMT Proponents: <span class="data-value">Stephanie Kelton, Warren Mosler</span></li>
+                    <li>Core Claim: <span class="data-value">Sovereign currency issuers can't default</span></li>
+                    <li>Real Constraint: <span class="data-value">Inflation, not solvency</span></li>
+                  </ul>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming February 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- EP 06-22 (Collapsed by default) -->
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 06</span>
+              <span class="episode-title">The Exorbitant Privilege Is Over: Why Allies Are Angry</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>How the US exports inflation to the world. De Gaulle was right.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming February 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 07</span>
+              <span class="episode-title">The Triffin Dilemma 2.0: The US Needs Deficits</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>The fundamental contradiction: reserve currency requires deficits.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming February 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 08</span>
+              <span class="episode-title">Fiscal Dominance: When the Fed Loses Control</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>What happens when the Fed must print money just to pay government bills?</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming February 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 09</span>
+              <span class="episode-title">The Fed's Impossible Choice: Inflation vs. Solvency</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Powell's dilemma: crash the economy or crash the currency?</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 10</span>
+              <span class="episode-title">Quantitative Easing: The Drug America Can't Quit</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>How QE works and why withdrawal causes convulsions.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 11</span>
+              <span class="episode-title">The Reverse Repo Mystery: $2 Trillion Parked Overnight</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Shadow banking, collateral shortage, and systemic fragility.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 12</span>
+              <span class="episode-title">The End of "Risk-Free": The Treasury Bond Rout</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>The 2023 bond crash and what it means for global collateral.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 13</span>
+              <span class="episode-title">When AAA Isn't AAA: The 2011 Downgrade</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>S&P downgrade and the political dysfunction premium.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 14</span>
+              <span class="episode-title">Debt Ceiling Theater: The World's Stupidest Crisis</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>How political brinkmanship scares investors more than economic data.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 15</span>
+              <span class="episode-title">Weaponization: The Mistake of Freezing Russian Reserves</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Did the US shoot itself in the foot? The trust deficit.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 16</span>
+              <span class="episode-title">SWIFT as a Weapon: The Boomerang Effect</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Financial warfare and its unintended consequences.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 17</span>
+              <span class="episode-title">The Petrodollar Myth: Is the Saudi Deal Dead?</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>1974 deal vs. 2023 Yuan settlements. The shifting sands.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 18</span>
+              <span class="episode-title">Gold's Revenge: Why Central Banks Are Buying Record Amounts</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>China and Poland dump treasuries for physical gold.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 19</span>
+              <span class="episode-title">Stablecoins: The Dollar's Secret Life Raft</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Paradox: Crypto might actually save the dollar.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 20</span>
+              <span class="episode-title">The Japanification of America</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Can the US survive 250% debt-to-GDP? Japan's lessons.</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 21</span>
+              <span class="episode-title">Scenario: What Does a Dollar Collapse Actually Look Like?</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>Realistic simulation: hyperinflation or deflationary crash?</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Coming March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="episode-item">
+            <div class="episode-header" onclick="toggleEpisode(this)">
+              <span class="episode-number">EP 22</span>
+              <span class="episode-title">Verdict: The Cleanest Shirt in the Dirty Laundry</span>
+              <span class="episode-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+            </div>
+            <div class="episode-content">
+              <div class="episode-inner">
+                <div class="episode-section">
+                  <h5>Core Question</h5>
+                  <p>The Dollar is flawed — but is there really an alternative? (TINA)</p>
+                </div>
+                <div class="episode-cta">
+                  <span class="coming-soon">Series Finale — March 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <!-- SERIES 2-5 Placeholders -->
+      <div id="series-2" class="series-content">
+        <div class="series-header">
+          <h3>The Dragon's Gambit</h3>
+          <p class="series-question">"Can China build an alternative to dollar hegemony?"</p>
+          <div class="series-meta">
+            <span><strong>Episodes:</strong> 23-42</span>
+            <span><strong>Tone:</strong> Analytical, Balanced, Investigative</span>
+            <span><strong>Themes:</strong> Yuan, CIPS, Digital Yuan, Belt and Road</span>
+          </div>
+        </div>
+        <div class="episodes-list">
+          <div class="episode-item">
+            <div class="episode-header">
+              <span class="episode-number">EP 23-42</span>
+              <span class="episode-title">20 Episodes — Coming Q2 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="series-3" class="series-content">
+        <div class="series-header">
+          <h3>The Chip Wars</h3>
+          <p class="series-question">"Who will control the technologies that control everything?"</p>
+          <div class="series-meta">
+            <span><strong>Episodes:</strong> 43-62</span>
+            <span><strong>Tone:</strong> High-Tech, Thriller</span>
+            <span><strong>Themes:</strong> Semiconductors, AI, TSMC, Export Controls</span>
+          </div>
+        </div>
+        <div class="episodes-list">
+          <div class="episode-item">
+            <div class="episode-header">
+              <span class="episode-number">EP 43-62</span>
+              <span class="episode-title">20 Episodes — Coming Q3 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="series-4" class="series-content">
+        <div class="series-header">
+          <h3>Europe's Twilight</h3>
+          <p class="series-question">"Is Europe becoming a museum of past greatness?"</p>
+          <div class="series-meta">
+            <span><strong>Episodes:</strong> 63-80</span>
+            <span><strong>Tone:</strong> Melancholic, Critical, Warning</span>
+            <span><strong>Themes:</strong> EU Decline, Energy Crisis, Demographics</span>
+          </div>
+        </div>
+        <div class="episodes-list">
+          <div class="episode-item">
+            <div class="episode-header">
+              <span class="episode-number">EP 63-80</span>
+              <span class="episode-title">18 Episodes — Coming Q4 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="series-5" class="series-content">
+        <div class="series-header">
+          <h3>The Asian Century</h3>
+          <p class="series-question">"Will the 21st century belong to Asia?"</p>
+          <div class="series-meta">
+            <span><strong>Episodes:</strong> 81-100</span>
+            <span><strong>Tone:</strong> Optimistic, Dynamic, Diverse</span>
+            <span><strong>Themes:</strong> India, ASEAN, Japan, Korea, Regional Integration</span>
+          </div>
+        </div>
+        <div class="episodes-list">
+          <div class="episode-item">
+            <div class="episode-header">
+              <span class="episode-number">EP 81-100</span>
+              <span class="episode-title">20 Episodes — Coming Q4 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div id="page-about" class="page" style="display:none;">
+    <div style="padding-top: 90px;"></div>
+    <main>
+      <div class="section-header">
+        <h2>
+          <span class="lang-en">About Nexus 3.0</span>
+          <span class="lang-ko">Nexus 3.0 소개</span>
+          <span class="lang-ja">Nexus 3.0について</span>
+        </h2>
+        <p>
+          <span class="lang-en">Decoding the geopolitics of money and power</span>
+          <span class="lang-ko">돈과 권력의 지정학을 해독한다</span>
+          <span class="lang-ja">金と権力の地政学を解読する</span>
+        </p>
+      </div>
+      
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div class="series-header">
+          <h3>
+            <span class="lang-en">The Mission</span>
+            <span class="lang-ko">미션</span>
+            <span class="lang-ja">ミッション</span>
+          </h3>
+          <p style="margin-top: 1rem; color: var(--charcoal);">
+            <span class="lang-en">The world order is shifting. The signs are in the data, the flows, the balance sheets. We decode them.</span>
+            <span class="lang-ko">세계 질서가 바뀌고 있다. 그 징후는 데이터, 자금 흐름, 재무제표에 있다. 우리는 그것을 해독한다.</span>
+            <span class="lang-ja">世界秩序が変わりつつある。その兆候はデータ、資金の流れ、財務諸表にある。我々はそれを解読する。</span>
+          </p>
+          <p style="margin-top: 1rem; color: var(--charcoal);">
+            <span class="lang-en">Nexus 3.0 provides evidence-based analysis of the forces reshaping global power — from the fragility of dollar hegemony to the rise of Asia, from semiconductor geopolitics to Europe's struggle for relevance.</span>
+            <span class="lang-ko">Nexus 3.0은 달러 패권의 취약성부터 아시아의 부상, 반도체 지정학부터 유럽의 존재감 투쟁까지, 글로벌 권력을 재편하는 힘에 대한 증거 기반 분석을 제공합니다.</span>
+            <span class="lang-ja">Nexus 3.0は、ドル覇権の脆弱性からアジアの台頭、半導体の地政学からヨーロッパの存在感を巡る闘いまで、グローバルパワーを再編する力についての証拠に基づく分析を提供します。</span>
+          </p>
+          <p style="margin-top: 1rem; color: var(--charcoal);">
+            <span class="lang-en">Each episode addresses fundamental questions about the current great power transition, using economic data, historical precedent, and geopolitical analysis to provide clarity in an uncertain world.</span>
+            <span class="lang-ko">각 에피소드는 경제 데이터, 역사적 선례, 지정학적 분석을 사용하여 불확실한 세계에 명확성을 제공하며, 현재의 대전환기에 관한 근본적인 질문을 다룹니다.</span>
+            <span class="lang-ja">各エピソードは、経済データ、歴史的先例、地政学的分析を用いて不確実な世界に明確さを提供し、現在の大転換期に関する根本的な問いに取り組みます。</span>
+          </p>
+        </div>
+        
+        <div class="series-header" style="margin-top: 2rem;">
+          <h3>
+            <span class="lang-en">For Whom?</span>
+            <span class="lang-ko">누구를 위한 채널인가?</span>
+            <span class="lang-ja">誰のためのチャンネルか？</span>
+          </h3>
+          <ul style="margin-top: 1rem; color: var(--charcoal); list-style: none;">
+            <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--gold);">→</span>
+              <span class="lang-en">Intellectually curious individuals who ask "why" when consuming news</span>
+              <span class="lang-ko">뉴스를 볼 때 "왜?"라고 묻는 지적 호기심이 강한 사람들</span>
+              <span class="lang-ja">ニュースを見るとき「なぜ？」と問う知的好奇心の強い人々</span>
+            </li>
+            <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--gold);">→</span>
+              <span class="lang-en">Investors seeking macro context for their decisions</span>
+              <span class="lang-ko">투자 결정에 거시적 맥락을 찾는 투자자들</span>
+              <span class="lang-ja">投資判断にマクロの文脈を求める投資家</span>
+            </li>
+            <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--gold);">→</span>
+              <span class="lang-en">Professionals who need to understand geopolitical risk</span>
+              <span class="lang-ko">지정학적 리스크를 이해해야 하는 전문가들</span>
+              <span class="lang-ja">地政学的リスクを理解する必要があるプロフェッショナル</span>
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--gold);">→</span>
+              <span class="lang-en">Anyone seeking evidence-based analysis of an uncertain future</span>
+              <span class="lang-ko">불확실한 미래에 대한 증거 기반 분석을 원하는 모든 사람들</span>
+              <span class="lang-ja">不確実な未来についての証拠に基づく分析を求めるすべての人々</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="https://www.youtube.com/channel/UCACRkyZNYi7I9HtgBtbLv4A" target="_blank" class="hero-cta">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span class="lang-en">Subscribe on YouTube</span>
+            <span class="lang-ko">YouTube 구독하기</span>
+            <span class="lang-ja">YouTubeで購読する</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Nexus <span>3.0</span></div>
+      <p class="footer-tagline">
+        <span class="lang-en">"Follow the money. Find the power."</span>
+        <span class="lang-ko">"돈을 따라가라. 권력을 찾아라."</span>
+        <span class="lang-ja">"金を追え。権力を見つけろ。"</span>
+      </p>
+      <div class="footer-links">
+        <a href="https://www.youtube.com/channel/UCACRkyZNYi7I9HtgBtbLv4A" target="_blank">YouTube</a>
+      </div>
+      <p class="footer-copyright">© 2025 Nexus 3.0: Decoding Power. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Page navigation
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => {
+        p.style.display = 'none';
+        p.classList.remove('active');
+      });
+      document.getElementById('page-' + pageId).style.display = 'block';
+      document.getElementById('page-' + pageId).classList.add('active');
+      
+      document.querySelectorAll('nav a:not(.youtube-btn)').forEach(a => a.classList.remove('active'));
+      document.querySelector('nav a[href="#' + pageId + '"]').classList.add('active');
+      
+      window.scrollTo(0, 0);
+    }
+    
+    // Series tabs
+    function showSeries(num) {
+      document.querySelectorAll('.series-tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i + 1 === num);
+      });
+      document.querySelectorAll('.series-content').forEach((content, i) => {
+        content.classList.toggle('active', i + 1 === num);
+      });
+    }
+    
+    // Episode accordion
+    function toggleEpisode(header) {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    }
+    
+    // Language switcher
+    function setLang(lang) {
+      document.body.setAttribute('data-lang', lang);
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
